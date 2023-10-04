@@ -1,16 +1,22 @@
 \section*{Exercise 02: Starting the Journey}
-I read the articles\\
-https://msrc.microsoft.com/blog/2023/07/microsoft-mitigates-china-based-threat-actor-storm-0558-targeting-of-customer-email/
-https://blogs.microsoft.com/on-the-issues/2023/07/11/mitigation-china-based-threat-actor/
-https://msrc.microsoft.com/blog/2023/09/results-of-major-technical-investigations-for-storm-0558-key-acquisition/
+\subsection*{Thinking About Threats}
+\textbf{Answers based on the following relevant articles:}\\
+\begin{itemize}
+    \item \href{https://msrc.microsoft.com/blog/2023/07/microsoft-mitigates-china-based-threat-actor-storm-0558-targeting-of-customer-email/}{Microsoft mitigates China-based threat actor Storm-0558 targeting of customer email}
+    \item \href{https://blogs.microsoft.com/on-the-issues/2023/07/11/mitigation-china-based-threat-actor/}{Mitigation for China-based threat actor activity}
+    \item \href{https://msrc.microsoft.com/blog/2023/09/results-of-major-technical-investigations-for-storm-0558-key-acquisition/}{Results of Major Technical Investigations for Storm-0558 Key Acquisition}
+\end{itemize}
 
-\textbf{How did they separate access and infrastructure according to data relevance and impact?}\\
+
+\subsubsection*{How did they separate access and infrastructure according to data relevance and impact?}
 They perform background checks, have dedicated identifiable accounts, secure access workstations and MFA using hardware token devices. They prevent the use of email and other communication tools which can compromise machines with malware or keylogs. They use Just in Time and Just Enough Access policies. They added the helper APIs, but failed to update relevant endpoint validation. Developers in other teams assumed that this validation was always performed and thus the disconnect happened.
 
-\textbf{\dag How do roles and personnel fit into this, and which role could policies and training play?}\\
+\subsubsection*{How do roles and personnel fit into this, and which role could policies and training play?}
 Lack of evidence because of log retention policies. Because of a disconnect between team roles and personnel, validation was not performed.
 
-Explain:
+\subsection*{Pentesting Intro}
+\subsubsection*{Which advantages for penetration testing would you see in the different approaches? What is the best option?}
+
 \begin{itemize}
     \item NAT
     \item NAT Networks
@@ -18,34 +24,26 @@ Explain:
     \item Host Only
 \end{itemize}
 
-\textbf{\dag Which advantages for penetration testing would you see in the different approaches? What is the best option?}\\
-Which command would you use to get the IP in Windows?
-ifconfig linux
-ipconfig windows
-
-\textbf{\dag How does inspecting the ip configuration of a system help you with penetration testing? What is the security relevant aspect?}\\
+\subsubsection*{How does inspecting the ip configuration of a system help you with penetration testing? What is the security relevant aspect?}
 It does so by giving you info about all internet adapters, their protocols, their addresses, metrics, etc. etc.
 
-\textbf{Created the payload and transferred using netcat file transfer}\\
-Specific sysinfo, Ubuntu 14.04 with Linux kernel 3.13.0-24
-
-\textbf{\dag How do you get the targeted user to execute our malicious payload?}\\
+\subsubsection*{How do you get the targeted user to execute our malicious payload?}
 Social Engineering, Disguising the file, exploiting vulnerabilities that allow for automatic code execution.
 
-\textbf{TASK: Is Metasploitable3 vulnerable to this exploit?}\\
+\subsubsection*{Is Metasploitable3 vulnerable to this exploit?}
 Testing the vulnerability is simple as connecting to the metasploitable vm and accessing sysinfo, verifying if it's correct.
 The vulnerability in this case, is an open nginx 8080 port, allowing us to connect.
 Metasploitable3 is very vulnerable to this exploit as it's designed to be so.
 It should close unused open ports, regularly update kernel and application versions, shut down unnecessary services and require validation before connection.
 It's quite easy to trick someone to download malicious files through torrenting, limewire, linkin-park-in-the-end.exe etc.
 
-\textbf{\dag What is the practical use of this exercise? And why is the payload working in the way it is? How does this exercise relate to remote and reverse shells?}\\
+\subsubsection*{What is the practical use of this exercise? And why is the payload working in the way it is? How does this exercise relate to remote and reverse shells?}
 The practical use of this exercise is to see how easy it is to gain access to a vulnerable systems shell. The payload works how it does because
 
-\textbf{Which folder are you in when you get the meterpreter prompt? And whatis the system-information?}
+\subsubsection*{Which folder are you in when you get the meterpreter prompt? And whatis the system-information?}
 I am in the folder that the payload.efi was run at
 
-\textbf{\dag As user and the owner of this system -- how would you mitigate this attack?}\\
+\subsubsection*{As user and the owner of this system -- how would you mitigate this attack?}
 By not chmodding and running payloads which I don't know what are smh.
 
 \textbf{How does knowing usernames help an attacker/penentration tester?
