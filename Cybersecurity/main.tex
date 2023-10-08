@@ -6,6 +6,7 @@
     \usepackage[fontsize=12pt]{fontsize}
     \usepackage[parfill]{parskip}
     \usepackage{hyperref}
+    \usepackage[final]{listings}
 
 \hypersetup{
     colorlinks=true,
@@ -13,6 +14,7 @@
     filecolor=magenta,
     urlcolor=cyan,
 }
+
 
 
 \title{%
@@ -24,6 +26,14 @@
 
 
 \begin{document}
+
+\lstdefinestyle{term}{
+    % backgroundcolor=\color{black}
+    frame=single
+    % numbers=left
+}
+
+\lstset{style=term}
 % \noindent
 \maketitle
 \vspace*{\fill}

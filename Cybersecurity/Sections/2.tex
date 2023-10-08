@@ -46,22 +46,19 @@ I am in the folder that the payload.efi was run at
 \subsubsection*{As user and the owner of this system -- how would you mitigate this attack?}
 By not chmodding and running payloads which I don't know what are smh.
 
-\textbf{How does knowing usernames help an attacker/penentration tester?
-}\\
+\subsubsection*{How does knowing usernames help an attacker/penentration tester?
+}
 It's a significant advantage as it allows you to brute-force passwords much faster and ensuring that you are actually on a user with specific permissions.
 
-\textbf{Now that you have access to the Metasploitable machine what else can wedo? Get the list of users on this server, using a shell prompt by typing"shell" into the Meterpreter shell.}\\
+\subsubsection*{Now that you have access to the Metasploitable machine what else can wedo? Get the list of users on this server, using a shell prompt by typing"shell" into the Meterpreter shell.}
 TODO
 
-\textbf{\dag How does knowing usernames help an attacker/penentration tester?}\\
+\subsubsection*{How does knowing usernames help an attacker/penentration tester?}
 It's a significant advantage as it allows you to brute-force passwords much faster and ensuring that you are actually on a user with specific permissions.
 
-\textbf{\dag Using the meterpreter shell, check the output of the "arp" command. What do you find? Why could this information be relevant?
-}\\
+\subsubsection*{Using the meterpreter shell, check the output of the "arp" command. What do you find? Why could this information be relevant?
+}
 It displays internet-to-adapter address tables and when you're connected to a target machine, it shows the tables for that machine, which is very useful information when trying to penetrate.
 
-\textbf{\dag Now lets be on the other side of the fence and investigate suspicious connections to our metasploitable server. Which command can you use to see network status and connections? Is there an anomaly or suspicious connection to our server? What makes it suspicious?}\\
+\subsubsection*{Now lets be on the other side of the fence and investigate suspicious connections to our metasploitable server. Which command can you use to see network status and connections? Is there an anomaly or suspicious connection to our server? What makes it suspicious?}
 Unexpected source ip addresses, data transfers when you aren't expecting any, HTTP traffic on an unexpected port etc.
-
-\textbf{How you would test the vulnerability of an AppleTV using metasploit?Discuss in a group or write the procedure down.}\\
-TODO
