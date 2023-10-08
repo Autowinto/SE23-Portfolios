@@ -1,11 +1,49 @@
 \section*{Exercise 04: SQL Injection}
 
-\textbf{Nessus does say it was unable to get version number for the MySQL serverbecause it is restricted.}\\
-\textbf{\dag Does it mean the MySQL server is protected against cyber attacks?}\\\\
+\subsection*{Preparation}
 \textbf{try command mysql -h <METAPLOITABLE IP> -P 3306}\\
-\textbf{\dag How could that protection look like?}\\
-\textbf{\dag And what exactly would it protect against?}
+\textbf{Nessus does say it was unable to get version number for the MySQL server because it is restricted.}
+\subsubsection*{Does it mean the MySQL server is protected against cyber attacks?}
+It doesn't necessarily mean that the server is protected against attacks. Restricting the version number is one security measure, but it doesn't mean that the entire server is secure from any and all exploits.
 
+\subsubsection*{How could that protection look like?}
+Protection against cyberattacks could be things like using strong asswords, restricting access to only certain users or groups, using TLS encryption, disabling unnecessary features in the MySQL server, logging access to the server, updating to the latest versions and security patches frequently, setting up a firewall etc.
+\subsubsection*{And what exactly would it protect against?}
+Hiding the version-number protects against exploits that are available for certain versions of the MySQL server, while making use of general best-practices when it comes to security configuration, ensures that the amount of available exploits are minimized.
 
 \subsection*{Spying with SQL Injections}
-\textbf{\dag And what exactly would it protect against?}
+\subsubsection*{Please shortly discuss your opinion of this web server's configuration concerning directly listings}
+Directory listings should always be disabled for public websites, as it gives potential bad actors access to information about potential vulnerabilities and files that no user would need access to.
+
+\subsubsection*{What type of SQLi attack works? Can you explain why?}
+\subsubsection*{What is the \# sign for? Can we generally assume it to do the trick?}
+\subsubsection*{Include four relevant username/password combinations in your report. What is the issue with the passwords in the data base and what could bedone to secure them?}
+\subsubsection*{Which other problem allows you to get into the machine using ssh? Howcould this be prevented?}
+
+\subsection*{Elevation of Privilege}
+\subsubsection*{Which are the individual issues that allowed us to go from a web interfaceto root access, and how would you address them as a server's operator toprevent them being exploited? Describe the issues you identified and tryto come up with suggestions on how to fix them}
+
+\subsubsection*{Can SQL Injection expose an otherwise inaccessible data base server?}
+
+\subsubsection*{How likely do you think an attack scenario as presented here is?}
+
+\subsection*{Using our Foot in the Door for Access to Other Services}
+\subsubsection*{Is sudo necessary? What do we gain by using it?}
+Using sudo specifies the command to be run with root privileges.
+\subsubsection*{Are there other ways to search for a file? Which do you know?}
+
+\subsubsection*{Can you find anything interesting?}
+\subsubsection*{What's the username, password and database name?}
+\subsubsection*{What was the problem with the web application?}
+\subsubsection*{Which ports and services were the problem associated with?}
+\subsubsection*{How did you exploit the vulnerability?}
+\subsubsection*{And what were you able to do?}
+\subsubsection*{How would you suggest to fix the problem? (Do some online research aboutSQL injections solutions.)}
+\subsubsection*{Draft a shortly and crisply, the relevant parts of a policy trying to prevent theseissues.}
+
+\subsection*{Fully Explore Local Accounts}
+\subsubsection*{What are benefits of performing this scan after already having full access?}
+
+\subsection*{Post-Exploitation}
+\subsubsection*{Thinking as an attacker, what would your next steps be?}
+\subsubsection*{As an operator, what would you do to counteract?}

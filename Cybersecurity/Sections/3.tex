@@ -1,35 +1,30 @@
 \section*{Exercise 03: General Assessment}
 
 \subsection*{Finding information with whois}
-\lstinputlisting[caption={Output of whois command}]{Outputs/E03/whois.txt}
+\lstinputlisting[caption={Output of whois for sdu.dk}]{Outputs/E03/whois.txt}
 \subsubsection*{What do you learn about SDU's network? In the protocol, note the IP range.}
 We learn a whole lot about the network such as the date registered, the expiration date, address of registrant and hostnames.
 
-\subsubsection*{Are there other Networking-Services @SDU which you could try?}
-TODO
+\lstinputlisting[caption={Output of whois for the ip of sdu.dk}]{Outputs/E03/whoisip.txt}
+The IP range is 20.33.0.0 - 20.128.255.255
 
 \subsubsection*{What is the whois information for nextcloud.sdu.dk? What do you observe in comparison to the whois-information you gathered for www.sdu.dk}
-TODO
+\lstinputlisting[caption={Output of whois for nextcloud.sdu.dk}]{Outputs/E03/whoisncip.txt}
+
+The IP range is 130.225.128.0 - 130.225.159.255 for one.
+
+In addition, the output is much more detailed without having to query the ip address instead of the website name.
 
 \subsection*{Question: nmap}
 \subsubsection*{Nmap scans can be set up to evade firewalls. Which tags would you use for sending packets with specified ip options?}
+To do that you would use --ip-options with one of several options such as "R" to set a record route.
 \subsubsection*{Nmap scans can be set up to evade firewalls. Which tags would you use for spoofing your MAC address?}
-
-\subsection*{Scanning the Metasploitable VMs}
-TODO
-
-\subsection*{Scanning with Legion}
-TODO
-
-\subsection*{Scanning with Nessus}
-TODO
-
-\subsection*{Scanning with the Greenbone Vulnerability Manager (GVM)}
-TODO
+In that case I would use the tag --spoof-mac with either a specific mac address or 0 passed to use a random one.
 
 \subsection*{Comparing the Tools}
-\textbf{\dag Compare your results from each of the previous activities in each question (e.g., sparta vs nessus vs openvas). Take notes and discuss overlaps and differences in results, pros and cons, ease of use for each tool.}\\
-TODO
+\subsubsection*{Compare your results from each of the previous activities in each question (e.g., sparta vs nessus vs openvas). Take notes and discuss overlaps and differences in results, pros and cons, ease of use for each tool.}
+
+GVM, NESSUS, LEGION, METASPLOITABLE VMs
 
 \subsection*{Collecting the Assessment Information}
 Find possible vulnerabilities with metasploitable3 (both Windows and Ubuntu).
