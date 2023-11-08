@@ -1,7 +1,54 @@
-\section*{Exercise 06: Social Engineering}
+\section{Exercise 06: Social Engineering}
 
-\subsection*{Defense}
-\subsubsection*{Which technical tools can be used to defend against social engineering attacks and against which?}
-\subsubsection*{Give examples on how you, as IT-experts, can either stop or mitigate Social Engineering.}
+\subsection{Defense}
+\subsubsection{Which technical tools can be used to defend against social engineering attacks and against which?}
+\begin{itemize}
+    \item Email filtering software
+          \begin{itemize}
+              \item \textbf{Functionality: } The software scans incoming emails for potential phishing attempts or malicious contents, resulting in many obvious attempts at malicious activity being filtered.
+              \item \textbf{Protects against: } Protects the user against phishing and email scams such as impersonation attempts.
+          \end{itemize}
+    \item MFA systems
+          \begin{itemize}
+              \item \textbf{Functionality: } Adds an additional layer of security by forcing the user to input a dynamically generated code as well as their password when signing in.
+              \item \textbf{Protects against: } Protects the user against password leaks, insecure passwords etc.
+          \end{itemize}
+    \item Antivirus software
+          \begin{itemize}
+              \item \textbf{Functionality: } Scans systems and programs for known malicious code and quarantines files before they can gain access to or change a system.
+              \item \textbf{Protects against: } Protects against viruses, malware, spyware and trojans.
+          \end{itemize}
+    \item User roles and PAM
+          \begin{itemize}
+              \item \textbf{Functionality: } User roles allow an organization to specify that a user only has access to very specific things in the organization portals and the entire PAM system monitors access to resources and logs attempts at unauthorized access.
+              \item \textbf{Protects against: } Helps mitigate damage of social engineering attacks by limiting access to resources if access to a user account is obtained.
+          \end{itemize}
+\end{itemize}
+\subsubsection{Give examples on how you, as IT-experts, can either stop or mitigate Social Engineering.}
+Some ways of stopping or mitigating damage from Social Engineering attacks are as follows:
+\begin{itemize}
+    \item Implementing strong organizational security policies and ensuring that every employee within the organization is trained to follow these policies and procedures.
+    \item Controlling access to the physical organization by unauthorized personnel by implementing security badges, key cards, biometric systems etc.
+    \item Implementing phishing detection tools and ensuring regular employee phishing tests, allowing them to fail without catastrophic failure ensuing.
+\end{itemize}
 
-\subsection*{Experiment: Attack and Defen}
+\subsection{Experiment: Attack and Defend}
+The experiment was performed in a small group.\\\\
+DAN is a quiet reserved loner. He's trusting, good-natured and lenient. He's conscientious, hard-working, well-organized and punctual. He's calm, even-tempered, comfortable and unemotional. He's down to eart, uncreative, conventional and uncurious.
+\subsubsection{Attacker's Perspective}
+Based off the information provided about DAN, we believe that the proper course of action to socially engineer him would be an email phishing scam, making use of his trusting and well-organized traits by impersonating the danish tax ministry asking him to update his advance statement to ensure correct tax calculations.
+
+Impersonating an authority figure will let us make use of his calm, unemotional and curious nature as well, as these traits make him unlikely to seek out a second opinion, especially considering tax season beginning around november.
+\subsubsection{Defender's Perspective}
+The course designed to train DAN on how to avoid being socially engineered needs to cater specifically to his weaknesses. Therefore, the curriculum is as follows:
+\begin{itemize}
+    \item How to efficiently make use of firewalls, anti-phishing tools and spam filters.
+    \item Instilling several rules of thumb in DAN and his way of navigating the workspace:
+          \begin{itemize}
+              \item Official government communication will never include asking for personal information or direct links to signup pages.
+              \item Make use of multi-factor-authentication wherever available.
+              \item Involve coworkers or supervisors whenever there's any doubt about the validity of emails.
+          \end{itemize}
+\end{itemize}
+
+\subsubsection{Comparing the strategies, improve on attack and defence}

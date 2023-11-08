@@ -16,7 +16,8 @@
     urlcolor=cyan,
 }
 
-
+\setcounter{secnumdepth}{0}
+\setcounter{tocdepth}{2}
 
 \title{%
     \bf{Cybersecurity Autumn 2023} \\
@@ -24,20 +25,15 @@
 }
 \author{Magnus Christian Larsen}
 
-
-
 \begin{document}
 
-\lstdefinestyle{term}{
-    % backgroundcolor=\color{black}
+\lstset{
     numbers=left,
-    frame=single,
+    frame=line,
     breaklines=true
-    % numbers=left
 }
 
-\lstset{style=term}
-% \noindent
+
 \maketitle
 \vspace*{\fill}
 \begin{center}
@@ -50,7 +46,7 @@
 \newpage
 \tableofcontents
 \newpage
-\section*{Info}
+\section{Info}
 Questions marked in bold are the important questions for report.\\
 Currently in doubt about format of final report. Layout will change.
 % \include{Sections/1.tex}
@@ -59,6 +55,7 @@ Currently in doubt about format of final report. Layout will change.
 \include{Sections/4.tex}
 \include{Sections/5.tex}
 \include{Sections/6.tex}
+\include{Sections/7.tex}
 % \include{Sections/7.tex}
 
 \end{document}

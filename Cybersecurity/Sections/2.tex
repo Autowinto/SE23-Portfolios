@@ -1,5 +1,5 @@
-\section*{Exercise 02: Starting the Journey}
-\subsection*{Thinking About Threats}
+\section{Exercise 02: Starting the Journey}
+\subsection{Thinking About Threats}
 \textbf{Answers based on the following relevant articles:}\\
 \begin{itemize}
     \item \href{https://msrc.microsoft.com/blog/2023/07/microsoft-mitigates-china-based-threat-actor-storm-0558-targeting-of-customer-email/}{Microsoft mitigates China-based threat actor Storm-0558 targeting of customer email}
@@ -8,14 +8,14 @@
 \end{itemize}
 
 
-\subsubsection*{How did they separate access and infrastructure according to data relevance and impact?}
+\subsubsection{How did they separate access and infrastructure according to data relevance and impact?}
 They perform background checks, have dedicated identifiable accounts, secure access workstations and MFA using hardware token devices. They prevent the use of email and other communication tools which can compromise machines with malware or keylogs. They use Just in Time and Just Enough Access policies. They added the helper APIs, but failed to update relevant endpoint validation. Developers in other teams assumed that this validation was always performed and thus the disconnect happened.
 
-\subsubsection*{How do roles and personnel fit into this, and which role could policies and training play?}
+\subsubsection{How do roles and personnel fit into this, and which role could policies and training play?}
 Lack of evidence because of log retention policies. Because of a disconnect between team roles and personnel, validation was not performed.
 
-\subsection*{Pentesting Intro}
-\subsubsection*{Which advantages for penetration testing would you see in the different approaches? What is the best option?}
+\subsection{Pentesting Intro}
+\subsubsection{Which advantages for penetration testing would you see in the different approaches? What is the best option?}
 
 \begin{itemize}
     \item NAT
@@ -24,41 +24,41 @@ Lack of evidence because of log retention policies. Because of a disconnect betw
     \item Host Only
 \end{itemize}
 
-\subsubsection*{How does inspecting the ip configuration of a system help you with penetration testing? What is the security relevant aspect?}
+\subsubsection{How does inspecting the ip configuration of a system help you with penetration testing? What is the security relevant aspect?}
 It does so by giving you info about all internet adapters, their protocols, their addresses, metrics, etc. etc.
 
-\subsubsection*{How do you get the targeted user to execute our malicious payload?}
+\subsubsection{How do you get the targeted user to execute our malicious payload?}
 Social Engineering, Disguising the file, exploiting vulnerabilities that allow for automatic code execution.
 
-\subsubsection*{Is Metasploitable3 vulnerable to this exploit?}
+\subsubsection{Is Metasploitable3 vulnerable to this exploit?}
 Testing the vulnerability is simple as connecting to the metasploitable vm and accessing sysinfo, verifying if it's correct.
 The vulnerability in this case, is an open nginx 8080 port, allowing us to connect.
 Metasploitable3 is very vulnerable to this exploit as it's designed to be so.
 It should close unused open ports, regularly update kernel and application versions, shut down unnecessary services and require validation before connection.
 It's quite easy to trick someone to download malicious files through torrenting, limewire, linkin-park-in-the-end.exe etc.
 
-\subsubsection*{What is the practical use of this exercise? And why is the payload working in the way it is? How does this exercise relate to remote and reverse shells?}
+\subsubsection{What is the practical use of this exercise? And why is the payload working in the way it is? How does this exercise relate to remote and reverse shells?}
 The practical use of this exercise is to see how easy it is to gain access to a vulnerable systems shell. The payload works how it does because
 
-\subsubsection*{Which folder are you in when you get the meterpreter prompt? And whatis the system-information?}
+\subsubsection{Which folder are you in when you get the meterpreter prompt? And whatis the system-information?}
 I am in the folder that the payload.efi was run at
 
-\subsubsection*{As user and the owner of this system -- how would you mitigate this attack?}
+\subsubsection{As user and the owner of this system -- how would you mitigate this attack?}
 By not chmodding and running payloads which I don't know what are smh.
 
-\subsubsection*{How does knowing usernames help an attacker/penentration tester?
+\subsubsection{How does knowing usernames help an attacker/penentration tester?
 }
 It's a significant advantage as it allows you to brute-force passwords much faster and ensuring that you are actually on a user with specific permissions.
 
-\subsubsection*{Now that you have access to the Metasploitable machine what else can wedo? Get the list of users on this server, using a shell prompt by typing"shell" into the Meterpreter shell.}
+\subsubsection{Now that you have access to the Metasploitable machine what else can wedo? Get the list of users on this server, using a shell prompt by typing"shell" into the Meterpreter shell.}
 TODO
 
-\subsubsection*{How does knowing usernames help an attacker/penentration tester?}
+\subsubsection{How does knowing usernames help an attacker/penentration tester?}
 It's a significant advantage as it allows you to brute-force passwords much faster and ensuring that you are actually on a user with specific permissions.
 
-\subsubsection*{Using the meterpreter shell, check the output of the "arp" command. What do you find? Why could this information be relevant?
+\subsubsection{Using the meterpreter shell, check the output of the "arp" command. What do you find? Why could this information be relevant?
 }
 It displays internet-to-adapter address tables and when you're connected to a target machine, it shows the tables for that machine, which is very useful information when trying to penetrate.
 
-\subsubsection*{Now lets be on the other side of the fence and investigate suspicious connections to our metasploitable server. Which command can you use to see network status and connections? Is there an anomaly or suspicious connection to our server? What makes it suspicious?}
+\subsubsection{Now lets be on the other side of the fence and investigate suspicious connections to our metasploitable server. Which command can you use to see network status and connections? Is there an anomaly or suspicious connection to our server? What makes it suspicious?}
 Unexpected source ip addresses, data transfers when you aren't expecting any, HTTP traffic on an unexpected port etc.

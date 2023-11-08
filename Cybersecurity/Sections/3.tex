@@ -1,46 +1,55 @@
-\section*{Exercise 03: General Assessment}
+\section{Exercise 03: General Assessment}
 
-\subsection*{Finding information with whois}
+\subsection{Finding information with whois}
 \lstinputlisting[caption={Output of whois for sdu.dk}]{Outputs/E03/whois.txt}
-\subsubsection*{What do you learn about SDU's network? In the protocol, note the IP range.}
+\subsubsection{What do you learn about SDU's network? In the protocol, note the IP range.}
 We learn a whole lot about the network such as the date registered, the expiration date, address of registrant and hostnames.
 
 \lstinputlisting[caption={Output of whois for the ip of sdu.dk}]{Outputs/E03/whoisip.txt}
 The IP range is 20.33.0.0 - 20.128.255.255
 
-\subsubsection*{What is the whois information for nextcloud.sdu.dk? What do you observe in comparison to the whois-information you gathered for www.sdu.dk}
+\subsubsection{What is the whois information for nextcloud.sdu.dk? What do you observe in comparison to the whois-information you gathered for www.sdu.dk}
 \lstinputlisting[caption={Output of whois for nextcloud.sdu.dk}]{Outputs/E03/whoisncip.txt}
 
 The IP range is 130.225.128.0 - 130.225.159.255 for one.
 
 In addition, the output is much more detailed without having to query the ip address instead of the website name.
 
-\subsection*{Question: nmap}
-\subsubsection*{Nmap scans can be set up to evade firewalls. Which tags would you use for sending packets with specified ip options?}
+\subsection{Question: nmap}
+\subsubsection{Nmap scans can be set up to evade firewalls. Which tags would you use for sending packets with specified ip options?}
 To do that you would use --ip-options with one of several options such as "R" to set a record route.
-\subsubsection*{Nmap scans can be set up to evade firewalls. Which tags would you use for spoofing your MAC address?}
+\subsubsection{Nmap scans can be set up to evade firewalls. Which tags would you use for spoofing your MAC address?}
 In that case I would use the tag --spoof-mac with either a specific mac address or 0 passed to use a random one.
 
-\subsection*{Comparing the Tools}
-\subsubsection*{Compare your results from each of the previous activities in each question (e.g., sparta vs nessus vs openvas). Take notes and discuss overlaps and differences in results, pros and cons, ease of use for each tool.}
+\subsection{Comparing the Tools}
+\subsubsection{Compare your results from each of the previous activities in each question (e.g., sparta vs nessus vs openvas). Take notes and discuss overlaps and differences in results, pros and cons, ease of use for each tool.}
 
 GVM, NESSUS, LEGION, METASPLOITABLE VMs
 
-\subsection*{Collecting the Assessment Information}
-Find possible vulnerabilities with metasploitable3 (both Windows and Ubuntu).
-State tools and resources used and then select 4 vulnerable services for each of the metasploitable VMs for which you document the following:
+\subsection{Collecting the Assessment Information}
+Collecting assessment information for 4 services requires us to first find an
 
-\textbf{\dag Service, port number and version number, e.g., FTP 21 vxxxx}
+\lstinputlisting[caption={\$ ip a}]{Outputs/E03/ip\space a.txt}
+Under the second internet adapter listing eth0, we can see that the inet range is 10.0.2.4/24
+
+\subsubsection{Service, port number and version number, e.g., FTP 21 vxxxx}
+\lstinputlisting[caption={\$ nmap -sn 10.0.2.4}]{Outputs/E03/nmap\space -sn\space 10.0.2.4.txt}
+Running nmap finding ports we find that 10.0.2.15 has a lot of vulnerabilities
+\lstinputlisting[caption={\$ nmap -sV -p- 10.0.2.15}]{Outputs/E03/nmap\space -sV\space -p-\space 10.0.2.15.txt}
+
+We select the four vulnerabilities:
+\begin{itemize}
+    \item FTP, 21 ProFTPD 1.3.5
+    \item SSH, 22, OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.13 (Ubuntu Linux; protocol 2.0)
+    \item HTTP, 80, Apache httpd 2.4.7
+    \item IPP, 631, CUPS 1.7
+\end{itemize}
+\subsubsection{Describe or explain at least one vulnerability that you found for that service, i.e., what is the underlying issue and what can be achieved? How severe is that issue? (You do not have to state how to exploit the vulnerability or go into technical details. We will look into this later btw. The intricate technicalities are mostly outside the scope of the course.) But make sure you describe what possible outcomes of the exploit are, what the impact for a real system were and how criticial you would assess the issue due to the effects, i.e., argue for your assessment}
 TODO
 
-\textbf{\dag Describe or explain at least one vulnerability that you found for that service, i.e., what is the underlying issue and what can be achieved? How severe is that issue? (You do not have to state how to exploit the vulnerability or go into technical details. We will look into this later btw. The intricate technicalities are mostly outside the scope of the course.) But make sure you describe what possible outcomes of the exploit are, what the impact for a real system were and how criticial you would assess the issue due to the effects, i.e., argue for your assessment}\\
+\subsubsection{For each of the vulnerabilities in the previous point, note the CVE and/or Source of information about the vulnerability for that version. Using metasploit's info command might help you here, if you want to go to the command line.}
 TODO
 
-\textbf{\dag For each of the vulnerabilities in the previous point, note the CVE and/or Source of information about the vulnerability for that version. Using metasploit’s info command might help you here, if you want to go to the command line.}\\
-TODO
-
-\subsection*{Completing the Assessment}
-\textbf{\dag
-    Create a final report, extending the collected information with an overall review of the security concerns in both the Metasploitable-3 Windows and Ubuntu systems, e.g., different criticality levels of the services (an overview of how bad the situation is) and which ones to to be prioritized when addressing security issues (a selection of the most relevant issues for prioritisation). For this use a combination of the results from the tools that you used or one of the tools.\\\\
-    Note, that you shouldn’t just copy and paste the severity of the tools you use, but read through the CVE you selected and try to determine how critical it is. I.e., what is the possible impact? Is the service inoperable, or is intellectual property at risk?}\\
+\subsection{Completing the Assessment}
+\subsubsection{Create a final report, extending the collected information with an overall review of the security concerns in both the Metasploitable-3 Windows and Ubuntu systems, e.g., different criticality levels of the services (an overview of how bad the situation is) and which ones to to be prioritized when addressing security issues (a selection of the most relevant issues for prioritisation). For this use a combination of the results from the tools that you used or one of the tools. Note, that you shouldn’t just copy and paste the severity of the tools you use, but read through the CVE you selected and try to determine how critical it is. I.e., what is the possible impact? Is the service inoperable, or is intellectual property at risk?}
 TODO
