@@ -1,0 +1,22 @@
+\section{Contributions}
+In the first individual hand-in I stated that there were two issues in particular which I planned to contribute towards completing the following two issues:\\\\
+\href{https://gitlab.sdu.dk/jolee18/cloud-bite-terraform-g-10/-/issues/10}{Issue 10: Use Secret Manager to store database sensitive information.}\\\\
+\href{https://gitlab.sdu.dk/jolee18/cloud-bite-terraform-g-10/-/issues/6}{Issue 6: Create build pipeline for frontend and backend applications.}\\\\
+While these issues did end up being implemented by me, my contributions extended a bit beyond what I had initially thought.
+\\\\
+The following three issues are ones that I ended up doing work on to implement. Some of them to a lesser extent and some of them to a higher extent which I will explain in more detail
+
+\begin{itemize}
+    \item \href{https://gitlab.sdu.dk/jolee18/cloud-bite-terraform-g-10/-/issues/7}{Issue 7: Change frontend app so that the backend address comes from configuration.}
+    \item 
+    \href{https://gitlab.sdu.dk/jolee18/cloud-bite-terraform-g-10/-/issues/9}{Issue 9: Deploy backend application to Cloud Run.}
+    \item 
+    \href{https://gitlab.sdu.dk/jolee18/cloud-bite-terraform-g-10/-/issues/15}{Issue: 15 Take environment variables in the backend from Secret Manager for connecting to the DB.}
+\end{itemize}
+Issue 7 is one of the issues that I helped out with. I helped set up secrets and environment variables in all of the applications. While I didn't end up doing the final implementation of variables for the frontend app, I did do a lot of the research that laid the groundwork for said implementation.
+\\\\
+Issue 9 is another issue that I helped out with. This is an issue that I did less work on than the other two additional issues, however, my contributions in helping the assigned developer to implement it, meant a faster and smoother implementation.
+\\\\
+Finally, Issue 15 is an issue that I ended up almost entirely taking over, as I was working with the secret manager and the cloud build pipelines anyway, and it made sense to extend those assignments to implementing the secrets as environment variables for the build process, allowing the database to connect via secrets.
+\\\\
+Additionally, I did work on a lot of different components that aren't documented in issues, such as defining serviceAccounts for use in cloud builds with correct permissions or accessing secrets.
