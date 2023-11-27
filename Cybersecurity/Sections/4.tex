@@ -16,10 +16,24 @@ Hiding the version-number protects against exploits that are available for certa
 Directory listings should always be disabled for public websites, as it gives potential bad actors access to information about potential vulnerabilities and files that no user would need access to.
 
 \subsubsection{What type of SQLi attack works? Can you explain why?}
+Out of the four options presented, the SQL injection attack that will work, is 'OR 1\=1\#. The reason for this, is because the beginning single quote terminates any string, meaning that SQL will now interpret anything after the single quote, as proper SQL statements. After the single quote, the statement OR 1=1, which is of course always a statement and makes the SQL statement always true, giving us the ability to fetch all data in a table for example.
 
 \subsubsection{What is the \# sign for? Can we generally assume it to do the trick?}
-\subsubsection{Include four relevant username/password combinations in your report. What is the issue with the passwords in the data base and what could bedone to secure them?}
-\subsubsection{Which other problem allows you to get into the machine using ssh? Howcould this be prevented?}
+A \# symbol denotes the beginning of a comment, which in the context of an SQL injection attack, effectively has the purpose of ignoring any other SQL that might come after our injection, as we don't really care about that and it reduces the risk of some check being run.
+
+\subsubsection{Include four relevant username/password combinations in your report. What is the issue with the passwords in the database and what could be done to secure them?}
+
+Relevant username and password combinations extracted would be:
+\\
+\begin{center}
+  \begin{tblr}{hlines, vlines}
+    ben\_kenobi & thats\_no\_m00n \\
+    darth\_vader &	Dark\_syD3 \\
+    anakin\_skywalker & but\_master:( \\
+    jarjar\_binks & mesah\_p@ssw0rd \\
+  \end{tblr}
+\end{center}
+\subsubsection{Which other problem allows you to get into the machine using ssh? How could this be prevented?}
 
 \subsection{Elevation of Privilege}
 \subsubsection{Which are the individual issues that allowed us to go from a web interfaceto root access, and how would you address them as a server's operator toprevent them being exploited? Describe the issues you identified and tryto come up with suggestions on how to fix them}
