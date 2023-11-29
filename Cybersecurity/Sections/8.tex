@@ -1,34 +1,83 @@
 \section{Threat Modelling}
 \label{sec:threat-modelling}
 
-\subsection{A Simple Data Flow Datrag}
+\subsection{A Simple Health App Data Flow Diagram}
+\begin{figure}[H]
+  \caption{Data Flow Diagram for the Health App}
+  \vspace*{1em}
+  \begin{center}
+    \includegraphics[width=\textwidth]{Diagrams/threat-modelling-1.png}
+  \end{center}
+\end{figure}
 \subsection{Formulate STRIDE}
+\textbf{Spoofing Identity}
+\begin{itemize}
+  \item Creation of fake user accounts
+  \item Impersonation of existing users
+\end{itemize}
+\textbf{Tampering with Data}
+\begin{itemize}
+  \item Direct alterations of stored data
+  \item Data corruption during transfer
+\end{itemize}
+\textbf{Repudiation}
+\begin{itemize}
+  \item Denying users access to data entry
+  \item Denying users access to data deletion
+\end{itemize}
+\textbf{Information Disclosure}
+\begin{itemize}
+  \item Access to health data without being authorized
+  \item Data leaks through debugging external debugging tools
+\end{itemize}
+\textbf{Denial of Service}
+\begin{itemize}
+  \item Intentionally crashing the app through malformed data
+  \item Denying service through DDoS attacks
+\end{itemize}
+\textbf{Elevation of Privilege}
+\begin{itemize}
+  \item Access to admin features without proper authorization
+  \item Exploiting vulnerabilities in the system to elevate user privileges
+\end{itemize}
 
-\subsection{Discuss your Data Flow Diagram \& STRIDE}
-\emph{%
-  \begin{itemize}
-  \item Create a data flow diagram\\
-    Please do not worry too much about the exact way the data flow diagram is created,
-    you can find a lot of information online which is adding more detail than we need.
-    Focus on where the data travels and use the literature provided as inspiration.
-  \item Formulate STRIDE\\
-    For each of the categories, describe at least $2$ threats based on your data flow diagram,
-    putting them down in a list or table.
-  \end{itemize}
-}
-
-\subsection{Update Flow Diagram \& STRIDE}
-
-\subsection{Discuss your Updated Data Flow Diagram \& STRIDE}
-\emph{%
-  \begin{itemize}
-  \item Create a data flow diagram\\
-    Please do not worry too much about the exact way the data flow diagram is created,
-    you can find a lot of information online which is adding more detail than we need.
-    Focus on where the data travels and use the literature provided as inspiration.
-  \item Formulate STRIDE\\
-    For each of the categories, describe at least $2$ threats based on your data flow diagram,
-    putting them down in a list or table.
-  \end{itemize}
-}
+\subsection{Updated Fitness Tracker App Flow Diagram}
+\begin{figure}[H]
+  \caption{Data Flow Diagram for the Fitness Tracker App}
+  \vspace*{1em}
+  \begin{center}
+    \includegraphics[width=\textwidth]{Diagrams/threat-modelling-2.png}
+  \end{center}
+\end{figure}
+\subsection{Formulate STRIDE}
+\textbf{Spoofing Identity}
+\begin{itemize}
+  \item Impersonation of a third-party devices such as a bluetooth device
+  \item Impersonation of a fake cloud server that the app connects to
+\end{itemize}
+\textbf{Tampering with Data}
+\begin{itemize}
+  \item Direct alterations of stored data
+  \item Data corruption during transfer
+\end{itemize}
+\textbf{Repudiation}
+\begin{itemize}
+  \item Denial of data transmission
+  \item Denial of data processing
+\end{itemize}
+\textbf{Information Disclosure}
+\begin{itemize}
+  \item Unauthorized access to the stored fitness data on device as well as cloud
+  \item Potential leaks via lacking security of third-party devices connecting to the app
+\end{itemize}
+\textbf{Denial of Service}
+\begin{itemize}
+  \item Sending large amounts of fitness tracking data, overloading the app server
+  \item Cloud service could become unavailable, resulting in data sync between device and cloud not being possible
+\end{itemize}
+\textbf{Elevation of Privilege}
+\begin{itemize}
+  \item Unauthorized access to data on the cloud server without having necessary privileges
+  \item Use exploits in the app to gain elevated access to cloud server
+\end{itemize}
 \end{document}

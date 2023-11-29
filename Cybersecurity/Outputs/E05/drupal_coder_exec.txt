@@ -1,0 +1,53 @@
+       Name: Drupal CODER Module Remote Command Execution
+     Module: exploit/unix/webapp/drupal_coder_exec
+   Platform: Unix
+       Arch: cmd
+ Privileged: No
+    License: Metasploit Framework License (BSD)
+       Rank: Excellent
+  Disclosed: 2016-07-13
+
+Provided by:
+  Nicky Bloor <nick@nickbloor.co.uk>
+  Mehmet Ince <mehmet@mehmetince.net>
+
+Available targets:
+      Id  Name
+      --  ----
+  =>  0   Automatic
+
+Check supported:
+  Yes
+
+Basic options:
+  Name       Current Setting  Required  Description
+  ----       ---------------  --------  -----------
+  Proxies                     no        A proxy chain of format type:host:port[,type:host:port][...]
+  RHOSTS                      yes       The target host(s), see https://docs.metasploit.com/docs/using-metasploit/basics/using-metasploit.html
+  RPORT      80               yes       The target port (TCP)
+  SSL        false            no        Negotiate SSL/TLS for outgoing connections
+  TARGETURI  /                yes       The target URI of the Drupal installation
+  VHOST                       no        HTTP server virtual host
+
+Payload information:
+  Space: 250
+  Avoid: 1 characters
+
+Description:
+  This module exploits a Remote Command Execution vulnerability in the
+  Drupal CODER Module. Unauthenticated users can execute arbitrary
+  commands under the context of the web server user.
+
+  The CODER module doesn't sufficiently validate user inputs in a script
+  file that has the PHP extension. A malicious unauthenticated user can
+  make requests directly to this file to execute arbitrary commands.
+  The module does not need to be enabled for this to be exploited.
+
+  This module was tested against CODER 2.5 with Drupal 7.5 installed on
+  Ubuntu Server.
+
+References:
+  https://www.drupal.org/node/2765575
+
+
+View the full module info with the info -d command.
