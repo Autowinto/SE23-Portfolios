@@ -1,0 +1,5 @@
+Mail version 8.1.2 01/15/2001.  Type ? for help.
+"/var/mail/root": 2 messages 1 new 2 unread
+ U  1 logcheck@kali.use  Tue Nov 28 19:54 1718/98308 kali 2023-11-28 19:53 -0500 Security Events
+>N  2 logcheck@kali.use  Tue Nov 28 19:55   29/1083  kali 2023-11-28 19:55 -0500 System Events
+&                

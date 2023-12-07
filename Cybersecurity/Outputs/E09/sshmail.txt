@@ -1,0 +1,26 @@
+Message 2:
+From logcheck@kali.users.kollegie.dk  Tue Nov 28 19:55:20 2023
+X-Original-To: root
+To: root@kali.users.kollegie.dk
+Subject: kali 2023-11-28 19:55 -0500 System Events
+Auto-Submitted: auto-generated
+MIME-Version: 1.0 (mime-construct 1.11)
+Content-Transfer-Encoding: quoted-printable
+Date: Tue, 28 Nov 2023 19:55:20 -0500 (EST)
+From: logcheck system account <logcheck@kali.users.kollegie.dk>
+
+This email is sent by logcheck. If you no longer wish to receive
+such mail, you can either uninstall the logcheck package or modify
+its configuration file (/etc/logcheck/logcheck.conf).
+
+
+E: File could not be read: /var/log/syslog
+E: File could not be read: /var/log/auth.log
+
+System Events
+=3D-=3D-=3D-=3D-=3D-=3D-=3D
+Nov 28 19:55:05 kali sshd[147321]: Connection closed by invalid user john :=
+:1 port 50502 [preauth]
+
+
+(END)

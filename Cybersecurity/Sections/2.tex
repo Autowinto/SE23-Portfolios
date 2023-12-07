@@ -1,28 +1,40 @@
 \section{Exercise 02: Starting the Journey}
 \subsection{Thinking About Threats}
-\textbf{Answers based on the following relevant articles:}\\
+Based on the three articles about the incident provided via the exercise, there are several things that can be said about the incidident.
+\subsubsection{How did they separate access and infrastructure according to data relevance and impact?}
+Prior to the Storm-0558 attack, Microsoft already had several security policies designed to limit access to data from unauthorized persons. Some of these were:
+
 \begin{itemize}
-    \item \href{https://msrc.microsoft.com/blog/2023/07/microsoft-mitigates-china-based-threat-actor-storm-0558-targeting-of-customer-email/}{Microsoft mitigates China-based threat actor Storm-0558 targeting of customer email}
-    \item \href{https://blogs.microsoft.com/on-the-issues/2023/07/11/mitigation-china-based-threat-actor/}{Mitigation for China-based threat actor activity}
-    \item \href{https://msrc.microsoft.com/blog/2023/09/results-of-major-technical-investigations-for-storm-0558-key-acquisition/}{Results of Major Technical Investigations for Storm-0558 Key Acquisition}
+    \item Employee background checks
+    \item Employees had identifiable user accounts
+    \item Strict access to workstations
+    \item Multi factor authentication
+    \item Requirements of regular password updates
 \end{itemize}
 
+In response to the Storm-0558 attack, Microsoft implemented several new security measures to avoid these types of attacks occurring in the future. These were:
 
-\subsubsection{How did they separate access and infrastructure according to data relevance and impact?}
-They perform background checks, have dedicated identifiable accounts, secure access workstations and MFA using hardware token devices. They prevent the use of email and other communication tools which can compromise machines with malware or keylogs. They use Just in Time and Just Enough Access policies. They added the helper APIs, but failed to update relevant endpoint validation. Developers in other teams assumed that this validation was always performed and thus the disconnect happened.
+\begin{itemize}
+    \item Categorization of data and infrastructure elements according to severity and criticality
+    \item Segregation of access and infrastructure based on aforementioned categorizations
+\end{itemize}
+
+These additional security implementations helped ensure, that an attack such as the Storm-0558 attack is much less likely to happen in the future.
 
 \subsubsection{How do roles and personnel fit into this, and which role could policies and training play?}
-Lack of evidence because of log retention policies. Because of a disconnect between team roles and personnel, validation was not performed.
+Roles and personnel are integral to Microsoft's cybersecurity framework. Personnel are trained with regular refreshes to recognize security threats and respond to these accordingly. Microsoft has clear guidelines and protocols that employees must follow, which enhances security of the organization as a whole.
 
 \subsection{Pentesting Intro}
 \subsubsection{Which advantages for penetration testing would you see in the different approaches? What is the best option?}
 
-\begin{itemize}
-    \item NAT
-    \item NAT Networks
-    \item Bridged Networking
-    \item Host Only
-\end{itemize}
+\textbf{NAT Networks}\\
+NAT networks allows multiple virtual machines to share a single network interface, effectively creating an isolated network sandbox, where the tester can perform their tests without impacting the external network, however, still allowing external communication if necessary.
+
+\textbf{Bridged Networking}\\
+Bridged networking is networking that connects a virtual machine to the actual network of the host machine, acting as a "bridge" allowing the Virtual Machine full access to the external network. The advantage of this, is as mentioned, full access to the external network, which is good when you're testing advanced scenarios that mimic real-life attacks.
+
+\textbf{Host Only}\\
+Host only is a network that completely isolates the virtual machine, disallowing networking with the external network. This is especially good when performing testing that requires isolation, such as testing malware or other things that we want to ensure doesn't go wrong.
 
 \subsubsection{How does inspecting the ip configuration of a system help you with penetration testing? What is the security relevant aspect?}
 It does so by giving you info about all internet adapters, their protocols, their addresses, metrics, etc. etc.
