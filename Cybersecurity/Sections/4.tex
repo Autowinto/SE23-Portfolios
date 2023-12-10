@@ -1,8 +1,5 @@
 \section{Exercise 04: SQL Injection}
-
 \subsection{Preparation}
-\textbf{try command mysql -h <METAPLOITABLE IP> -P 3306}\\
-\textbf{Nessus does say it was unable to get version number for the MySQL server because it is restricted.}
 \subsubsection{Does it mean the MySQL server is protected against cyber attacks?}
 It doesn't necessarily mean that the server is protected against attacks. Restricting the version number is one security measure, but it doesn't mean that the entire server is secure from any and all exploits.
 
@@ -27,10 +24,10 @@ Relevant username and password combinations extracted would be:
 \\
 \begin{center}
   \begin{tblr}{hlines, vlines}
-    ben\_kenobi & thats\_no\_m00n \\
-    darth\_vader &	Dark\_syD3 \\
-    anakin\_skywalker & but\_master:( \\
-    jarjar\_binks & mesah\_p@ssw0rd \\
+    ben\_kenobi       & thats\_no\_m00n \\
+    darth\_vader      & Dark\_syD3      \\
+    anakin\_skywalker & but\_master:(   \\
+    jarjar\_binks     & mesah\_p@ssw0rd \\
   \end{tblr}
 \end{center}
 \subsubsection{Which other problem allows you to get into the machine using ssh? How could this be prevented?}
@@ -104,4 +101,4 @@ Since I already have root access, I don't need to work towards gaining increased
 \\\\
 Having access to one machine on a network, I would try to discover additional machines that I could access, which could potentially gain me access to even more information. I would do all of this while making sure to leave as few logs as possible, so I wasn't discovered.
 \subsubsection{As an operator, what would you do to counteract?}
-After discovering that an attack is underway, my first 
+After discovering that an attack is underway, my first
