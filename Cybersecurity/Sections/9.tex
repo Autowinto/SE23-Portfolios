@@ -1,18 +1,14 @@
 \section{Exercise 09: Intrusion Detection}
-Being able to detect intruders in a given system is vital to maintaining a secure system.
 \subsection{Use case of the presented options}
 There are several different tools tested and provided through the exercise with different use cases and scenarios, which can all work together to create a more secure system by detecting intrusions.
 \subsubsection{Logcheck}
 Logchecking is an important part of a secure system, for several reasons. The sheer amount of information which is constantly being logged by even a medium-sized server or application is impossible to manually monitor and sift through. Therefore automated solutions such as using logcheck in conjunction with postfix to notify a responsible administrator of detections is a necessary thing to have implemented for proper security. It also gives us detailed information about the incident, so that we, as an advanced user can either fix the issue or use the provided information to improve the security of our system.
 
 \subsubsection{Extended Firewall Logging}
-TODO
+Using extended firewall logging, we can constantly watch for connections through the firewall, rejected connections and view these logs with journalctl. Watching the network traffic is an almost surefire way to be able to detect unauthorized connections to our machine, as it will be very hard to completely hide your presence like this. One downside to this, is that the sheer amount of connections to a machine could make it hard to notice suspicious connections without proper filtering.
 
 \subsubsection{Service Protection with sshguard}
-TODO
+SSHGuard is a tool which automatically analyzes ssh connection logs and detects when for example a brute-force attack is going on and can automatically block offending IP addresses. This of course, isn't a method that always works, as VPNs and proxies exist, which serve to hide the user's actual IP address and giving them ability to spoof an unlimited amount of addresses, avoiding an IP ban.
 
 \subsubsection{Suricata}
-TODO
-
-\subsubsection{Outlook: Security Information and Event Management}
-TODO
+Suricate works in much the same way as SSHGuard, but with network traffic in general and not just SSH connections. Suricata automatically looks at real-time traffic, analyzes this and can do this based on certain rules, allowing some connections and denying others, which makes it ideal for complex systems that has many connections and need to watch for very specific types of suspicious connections. The downside to this, is the amount of configuration and resources needed to manage such a tool correctly, as it isn't a simple endeavor.
