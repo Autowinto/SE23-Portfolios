@@ -43,21 +43,19 @@ It does so by giving you info about the configuration of the network, gateway an
 You can attempt to have a user execute your malicious code with several different approaches. You can attempt social engineering to trick the user into believing that a file is completely harmless by exploiting their trust in you as a person or an organization you represent. You can attempt to disguise the file, making it look like a perfectly normal executable, a video file, a song or something entirely different, making the target lower their guard. Finally, you could potentially exploit existing automatic code execution exploits to run code without the user even knowing.
 
 \subsubsection{What is the practical use of this exercise? And why is the payload working in the way it is? How does this exercise relate to remote and reverse shells?}
-The practical use of this exercise is to see how easy it is to gain access to a vulnerable systems shell. The payload works how it does because
+The practical use of this exercise is to see how easy it is to gain access to a vulnerable systems shell. The payload works the way it does, because in most realistic cases, there isn't going to be an easily exploitable open connection that we can just connect to. We need to be let in by an incoming connection, in this case the payload, which opens up a connection for us that we can use. The exercise shows us how a remote shell works and how we can make use of it to control an external vulnerable machine.
 
 \subsubsection{As user and the owner of this system -- how would you mitigate this attack?}
-By not chmodding and running payloads which I don't know what are smh.
-
-\subsubsection{How does knowing usernames help an attacker/penentration tester?
-}
-It's a significant advantage as it allows you to brute-force passwords much faster and ensuring that you are actually on a user with specific permissions.
+First of all, I wouldn't use chmod a+x on random files that I wasn't sure were safe. chmod a+x gives permission for execution by all users, which really isn't a very secure way of handling foreign files.
 
 \subsubsection{How does knowing usernames help an attacker/penentration tester?}
-It's a significant advantage as it allows you to brute-force passwords much faster and ensuring that you are actually on a user with specific permissions.
+It's a significant advantage as knowing a username allows you to begin brute-forcing the passwords of these users. In the case of a linux machine, the /etc/passwd file also contains information about which group a user is in, which if we have access to /etc/groups, gives us the ability to figure out which users are super users, which in the case of penetration testing, are high-value targets.
 
-\subsubsection{Using the meterpreter shell, check the output of the "arp" command. What do you find? Why could this information be relevant?
-}
-It displays internet-to-adapter address tables and when you're connected to a target machine, it shows the tables for that machine, which is very useful information when trying to penetrate.
+\subsubsection{Using the meterpreter shell, check the output of the "arp" command. What do you find? Why could this information be relevant?}
+Running the arp command on the metasploitable3 linux machine, gives us the following output:
+\lstinputlisting[caption={Output of the arp command on the metasploitable3 linux machine}]{Outputs/E02/arp.txt}
 
-\subsubsection{Now lets be on the other side of the fence and investigate suspicious connections to our metasploitable server. Which command can you use to see network status and connections? Is there an anomaly or suspicious connection to our server? What makes it suspicious?}
-Unexpected source ip addresses, data transfers when you aren't expecting any, HTTP traffic on an unexpected port etc.
+It displays a table of ip addresses of the machine, the hardware addresses, interfaces and more, which is very useful information to have about a target machine that you're attempting to penetrate.
+
+\subsubsection{Which command can you use to see network status and connections? Is there an anomaly or suspicious connection to our server? What makes it suspicious?}
+We can use the netstat -a command to see all active connections and sockets. Something that makes a connection suspicious would be an unexpected source IP address, data transfers when you yourself aren't performing any and aren't expecting any and HTTP traffic on unexpected ports.
