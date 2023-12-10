@@ -101,4 +101,13 @@ Since I already have root access, I don't need to work towards gaining increased
 \\\\
 Having access to one machine on a network, I would try to discover additional machines that I could access, which could potentially gain me access to even more information. I would do all of this while making sure to leave as few logs as possible, so I wasn't discovered.
 \subsubsection{As an operator, what would you do to counteract?}
-After discovering that an attack is underway, my first
+After discovering that an attack is underway, my first reaction would be to take the server off the public network to avoid further damage. Afterwards, I would cross-reference versions of software on my server with any known vulnerabilities, in case I hadn't updated to secure versions in time. If the exploits weren't obvious, I would use logs to try and figure out where the attack came from and through what kind of connection to narrow down teh entry point and ultimately work towards patching the vulnerability.
+
+\subsection{Obfuscated Malware}
+\subsubsection{Take your time to look at the code. Is it readable?}
+By itself the code isn't readable at all, as it's encoded in a base64 string format. After decoding the encoded string, we get the following code:
+\lstinputlisting[caption={The decoded python file}]{Outputs/E04/decoded.py}
+\subsubsection{What does the code do? Is it a malicious software and if so how would you classify it?}
+The code seemingly scans for an ip and a port and opens up a reverse shell using netcat to allow someone to connect to the shell of the machine where the payload is being run. While the scan function in and of itself isn't malicious, as it does exactly what it says it does, the resetScanner function actually downloads a file and attempts to execute it and the reverseShell function tried to open up a reverse shell IP 777.888.99.000:1234, potentially giving an attacker access to your machine.
+\\\\
+If you aren't careful and simply check the first function, you might be tempted to think the entire script is simply a scan script and disregard any security problems. Especially since the cleanup funciton removes any trace of the downloaded files, essentially making the malicious act undetectable if not careful.
