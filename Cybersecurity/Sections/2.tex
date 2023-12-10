@@ -42,18 +42,8 @@ It does so by giving you info about the configuration of the network, gateway an
 \subsubsection{How do you get the targeted user to execute our malicious payload?}
 You can attempt to have a user execute your malicious code with several different approaches. You can attempt social engineering to trick the user into believing that a file is completely harmless by exploiting their trust in you as a person or an organization you represent. You can attempt to disguise the file, making it look like a perfectly normal executable, a video file, a song or something entirely different, making the target lower their guard. Finally, you could potentially exploit existing automatic code execution exploits to run code without the user even knowing.
 
-\subsubsection{Is Metasploitable3 vulnerable to this exploit?}
-Testing the vulnerability is simple as connecting to the metasploitable vm and accessing sysinfo, verifying if it's correct.
-The vulnerability in this case, is an open nginx 8080 port, allowing us to connect.
-Metasploitable3 is very vulnerable to this exploit as it's designed to be so.
-It should close unused open ports, regularly update kernel and application versions, shut down unnecessary services and require validation before connection.
-It's quite easy to trick someone to download malicious files through torrenting, limewire, linkin-park-in-the-end.exe etc.
-
 \subsubsection{What is the practical use of this exercise? And why is the payload working in the way it is? How does this exercise relate to remote and reverse shells?}
 The practical use of this exercise is to see how easy it is to gain access to a vulnerable systems shell. The payload works how it does because
-
-\subsubsection{Which folder are you in when you get the meterpreter prompt? And whatis the system-information?}
-I am in the folder that the payload.efi was run at
 
 \subsubsection{As user and the owner of this system -- how would you mitigate this attack?}
 By not chmodding and running payloads which I don't know what are smh.
@@ -61,9 +51,6 @@ By not chmodding and running payloads which I don't know what are smh.
 \subsubsection{How does knowing usernames help an attacker/penentration tester?
 }
 It's a significant advantage as it allows you to brute-force passwords much faster and ensuring that you are actually on a user with specific permissions.
-
-\subsubsection{Now that you have access to the Metasploitable machine what else can wedo? Get the list of users on this server, using a shell prompt by typing"shell" into the Meterpreter shell.}
-TODO
 
 \subsubsection{How does knowing usernames help an attacker/penentration tester?}
 It's a significant advantage as it allows you to brute-force passwords much faster and ensuring that you are actually on a user with specific permissions.
