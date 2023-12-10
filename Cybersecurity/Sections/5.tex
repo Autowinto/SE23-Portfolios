@@ -55,10 +55,10 @@ There are several ways of which you can attempt to prevent tools like dirbuster 
 \end{itemize}
 
 \subsubsection{This attack didn't get us all the way to root. How would you continue the pentest? What would be your next actions?}
-TODO
+While we didn't get all the way to the root user, gaining access to the root user is actually a rather simple feat now that we have access to a sudo user. We can simply use the passwd command as such: sudo passwd root, which will prompt us to give root a new password, which we can then use to login to root. These would be my next steps.
 
 \subsubsection{Do you have any specific things in mind you would try to get root access?}
-TODO
+As stated before, I would attempt to use the passwd command to change the root password, which, could gain us access to the root user and gain full access of the system depending on the configuration. Considering the woefully misconfigured system, it's not so far-fetched that the system would be configured as such, that this was possible.
 
 \subsubsection{What makes getting a remote shell so powerful?}
 Getting a remote shell is especially powerful, as you now have access to running any commands that you desire. If you have root access, you can even move, copy and destroy any files you want. You could install new exploitative software, create backdoors and more. Having access to a remote shell means no longer being limited to simple injection attacks, but having much more control.
