@@ -106,7 +106,7 @@ After discovering that an attack is underway, my first reaction would be to take
 \subsection{Obfuscated Malware}
 \subsubsection{Take your time to look at the code. Is it readable?}
 By itself the code isn't readable at all, as it's encoded in a base64 string format. After decoding the encoded string, we get the following code:
-\lstinputlisting[caption={The decoded python file}]{Outputs/E04/decoded.py}
+\lstinputlisting[caption={The decoded python file}, language=python]{Outputs/E04/decoded.py}
 \subsubsection{What does the code do? Is it a malicious software and if so how would you classify it?}
 The code seemingly scans for an ip and a port and opens up a reverse shell using netcat to allow someone to connect to the shell of the machine where the payload is being run. While the scan function in and of itself isn't malicious, as it does exactly what it says it does, the resetScanner function actually downloads a file and attempts to execute it and the reverseShell function tried to open up a reverse shell IP 777.888.99.000:1234, potentially giving an attacker access to your machine.
 \\\\

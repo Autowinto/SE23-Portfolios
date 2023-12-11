@@ -1,54 +1,114 @@
 \section{Exercise 3: General Assessment}
 
 \subsection{Finding information with whois}
-\lstinputlisting[caption={Output of whois for sdu.dk}]{Outputs/E03/whois.txt}
 \subsubsection{What do you learn about SDU's network? In the protocol, note the IP range.}
-We learn a whole lot about the network such as the date registered, the expiration date, address of registrant and hostnames.
+Running whois for the ip address of www.sdu.dk gives us a whole bunch of information, such as NetRange, CIDR, the name of the domain organization. The full output would be too long to have in the report as-is, so snippets of the output are showcased as they become relevant. The snippet showing the IP range as well as information about the organization that the site is hosted with can be seen below.
 
-\lstinputlisting[caption={Output of whois for the ip of sdu.dk}]{Outputs/E03/whoisip.txt}
-The IP range is 20.33.0.0 - 20.128.255.255
+\lstinputlisting[caption={Snippet of information from the whois command on the ip address of www.sdu.dk}, firstline=13, lastline=25]{Outputs/E03/whoisip.txt}
+
+This part of the output tells us that the ip range is 20.33.0.0 to 20.128.255.255 or as denoted by the CIDR format, the ranges:
+\begin{itemize}
+    \item 20.33.0.0/16
+    \item 20.34.0.0/15
+    \item 20.36.0.0/14
+    \item 20.40.0.0/13
+    \item 20.48.0.0/12
+    \item 20.64.0.0/10
+    \item 20.128.0.0/16
+\end{itemize}
 
 \subsubsection{What is the whois information for nextcloud.sdu.dk? What do you observe in comparison to the whois-information you gathered for www.sdu.dk}
-\lstinputlisting[caption={Output of whois for nextcloud.sdu.dk}]{Outputs/E03/whoisncip.txt}
-
-The IP range is 130.225.128.0 - 130.225.159.255 for one.
-
-In addition, the output is much more detailed without having to query the ip address instead of the website name.
+Querying nextcloud.sdu.dk gives us a bunch of information like when we query the ip address of www.sdu.dk
+\lstinputlisting[caption={Snippet of information from the whois command on nextcloud.sdu.dk}, firstline=13, lastline=27, float]{Outputs/E03/whoisncip.txt}
+The output of querying nextcloud.sdu.dk is similar to the output of querying the ip address of sdu.dk without needing to actually query the ip address. Additionally, the ip range of nextcloud.sdu.dk is different, being 130.225.128.0 to 130.225.159.255.
 
 \subsection{Question: nmap}
-\subsubsection{Nmap scans can be set up to evade firewalls. Which tags would you use for sending packets with specified ip options?}
-To do that you would use --ip-options with one of several options such as "R" to set a record route.
-\subsubsection{Nmap scans can be set up to evade firewalls. Which tags would you use for spoofing your MAC address?}
-In that case I would use the tag --spoof-mac with either a specific mac address or 0 passed to use a random one.
+\subsubsection{Nmap scans can be set up to evade firewalls. Which tags would you use for sending packets with specified ip options and spoofing your MAC address?}
+In order to send packets with specific ip options, I would use the --ip-options argument as specified in the \href{https://nmap.org/book/man-bypass-firewalls-ids.html}{nmap manual}.
+\\\\
+In order to spoof a MAC address, I would use the --spoof-mac argument as specified in the \href{https://nmap.org/book/man-bypass-firewalls-ids.html}{nmap manual}.
 
 \subsection{Comparing the Tools}
-\subsubsection{Compare your results from each of the previous activities in each question (e.g., sparta vs nessus vs openvas). Take notes and discuss overlaps and differences in results, pros and cons, ease of use for each tool.}
+\subsubsection{Compare your results from each of the previous activities in each question (e.g, legion, nessus vs gvm). Take notes and discuss overlaps and differences in results, pros and cons, ease of use for each tool.}
+The following comparison is made between Legion, Nessus and GVM
 
-GVM, NESSUS, LEGION, METASPLOITABLE VMs
+Overlaps:
+\begin{itemize}
+    \item All three tools are used for vulnerability assessment.
+    \item Each tool is capable of identifying common vulnerabilities and security flaws in configurations.
+    \item All three tools have access to network scanning.
+\end{itemize}
+Differences:
+\begin{itemize}
+    \item \textbf{Legion} is open-source and has a bigger focus on network penetration. It has a higher tech literacy requirement.
+    \item \textbf{Nessus} is a closed-source product which has a focus on user-friendliness and scanning.
+    \item \textbf{GVM}, like Legion, is open-source and has a bigger focus on allowing power users to customize their scans to whatever use case they may have.
+\end{itemize}
+Pros \& Cons:
+\begin{itemize}
+    \item \textbf{Legion}
+          \begin{itemize}
+              \item \textbf{Pros:} Open-source, allows for custom scripting.
+              \item \textbf{Cons:} Not very user-friendly and requires prior technical knowledge.
+          \end{itemize}
+    \item \textbf{Nessus}
+          \begin{itemize}
+              \item \textbf{Pros:} Very user-friendly.
+              \item \textbf{Cons:} Commercial product, not as customizable.
+          \end{itemize}
+    \item \textbf{GVM}
+          \begin{itemize}
+              \item \textbf{Pros:} Open-source with always-updating vulnerability database, very customizable.
+              \item \textbf{Cons:} Not as intuitive for beginners as Nessus.
+          \end{itemize}
+\end{itemize}
+Ease of Use:
+\begin{itemize}
+    \item \textbf{Legion:} Technical focus allowing experienced users to get results they need.
+    \item \textbf{Nessus:} Very focused on easy usability with a user-friendly interface.
+    \item \textbf{GVM:} Complex interface and many options, allowing beginners to easily perform a scan with the flexibility to allow more experienced users to customize.
+\end{itemize}
 
 \subsection{Collecting the Assessment Information}
-Collecting assessment information for 4 services requires us to first find an
+Collecting assessment information for 4 services requires us to first find an ip range that we can scan with nmap. We can find this using the ip a command. This gives us two wifi interfaces, however, the only relevant one is the eth0 interface, so that's the one that will be shown.
 
-\lstinputlisting[caption={\$ ip a}]{Outputs/E03/ip\space a.txt}
-Under the second internet adapter listing eth0, we can see that the inet range is 10.0.2.4/24
+\lstinputlisting[caption={\$ ip a}, firstline=7]{Outputs/E03/ip\space a.txt}
+Under the second internet adapter listing eth0, we can see that the inet range is 10.0.2.4/24. This is the range that we will use with nmap to scan out network for vulnerabilities.
 
 \subsubsection{Service, port number and version number, e.g., FTP 21 vxxxx}
 \lstinputlisting[caption={\$ nmap -sn 10.0.2.4}]{Outputs/E03/nmap\space -sn\space 10.0.2.4.txt}
-Running nmap finding ports we find that 10.0.2.15 has a lot of vulnerabilities
+This scan shows us that there are 3 ip addresses on our network. In this case, the first is our own ip and the second one is our windows machine, making 10.0.2.15 the ip of the linux machine that we want to scan for further vulnerabilities. In reality, you would need to scan the machines first before knowing this, but for the sake of the flow of this report, this step is omitted.
+\\\\
+Running nmap with arguments specifying that we want to find open ports for the linux machine on 10.0.2.15, we find that there are plenty of open services on the machine.
 \lstinputlisting[caption={\$ nmap -sV -p- 10.0.2.15}]{Outputs/E03/nmap\space -sV\space -p-\space 10.0.2.15.txt}
 
-We select the four vulnerabilities:
+The four services that were selected to be analyzed are:
 \begin{itemize}
     \item FTP, 21 ProFTPD 1.3.5
+          \begin{itemize}
+              \item \textbf{Vulnerability:} ProFTPD allows for unauthenticated copying of files, which could potentially result in remote code execution.
+              \item \textbf{Severity:} It has a very high severity, as remote code execution is one of the worst exploits to have available on a machine.
+              \item \textbf{CVE:} CVE-2025-3306
+          \end{itemize}
     \item SSH, 22, OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.13 (Ubuntu Linux; protocol 2.0)
+          \begin{itemize}
+              \item \textbf{Vulnerability:} OpenSSH allows signing in with default credentials, allowing anyone to bypass authentication.
+              \item \textbf{Severity:} The severity is very high, as allowing users to bypass any part of the security of an SSH connection, could result in further unauthorized access and potentially remote access to a full machine's shell.
+              \item \textbf{CVE:} CVE-2023-1944
+          \end{itemize}
     \item HTTP, 80, Apache httpd 2.4.7
+          \begin{itemize}
+              \item \textbf{Vulnerability:} Drupal allows remote code execution through the drupal\_coder module, which is accessible through the open directory listing in Apache httpd.
+              \item \textbf{Severity:} This is very high severity for the same reason as the vulnerability of ProFTPD. Remote code execution is very dangerous.
+              \item \textbf{CVE:} https://www.drupal.org/node/2765575
+          \end{itemize}
     \item IPP, 631, CUPS 1.7
+          \begin{itemize}
+              \item \textbf{Vulnerability:} The service is using outdates versions of TLS, potentially making decryption of connections possible, no longer making it safe to send sensitive data over said connection.
+              \item \textbf{Severity:} The severity isn't too high, as sensitive data isn't necessarily being sent over the connection.
+              \item \textbf{CVE:} CVE-2011-3389
+          \end{itemize}
 \end{itemize}
-\subsubsection{Describe or explain at least one vulnerability that you found for that service, i.e., what is the underlying issue and what can be achieved? How severe is that issue? (You do not have to state how to exploit the vulnerability or go into technical details. We will look into this later btw. The intricate technicalities are mostly outside the scope of the course.) But make sure you describe what possible outcomes of the exploit are, what the impact for a real system were and how criticial you would assess the issue due to the effects, i.e., argue for your assessment}
-TODO
-
-\subsubsection{For each of the vulnerabilities in the previous point, note the CVE and/or Source of information about the vulnerability for that version. Using metasploit's info command might help you here, if you want to go to the command line.}
-TODO
 
 \subsection{Completing the Assessment}
 \subsubsection{Create a final report, extending the collected information with an overall review of the security concerns in both the Metasploitable-3 Windows and Ubuntu systems, e.g., different criticality levels of the services (an overview of how bad the situation is) and which ones to to be prioritized when addressing security issues (a selection of the most relevant issues for prioritisation). For this use a combination of the results from the tools that you used or one of the tools. Note, that you shouldn’t just copy and paste the severity of the tools you use, but read through the CVE you selected and try to determine how critical it is. I.e., what is the possible impact? Is the service inoperable, or is intellectual property at risk?}
