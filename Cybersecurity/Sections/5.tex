@@ -2,9 +2,9 @@
 \subsection{Background}
 \subsubsection{Which vulnerabilities do you think can be used? Pick two potential vulnerabilities and describe them in terms of why you picked them, i.e., date and exploit effect.}
 The vulnerabilities that I'd pick are the drupal\_coder\_exec vulnerability and the drupal\_drupageddon vulnerability. Both of these have an excellent rank in terms of exploitability.
-\\\\
+
 The drupal\_coder\_exec exploit is a good choice because of the fact that a third-party plugin is introducing the vulnerability. This means that drupal, as an organization don't have as much control over the issue as they otherwise would if the exploit came from in-house code. The fact that the module allows for arbitrary code execution also means, that it's potentially a powerful entry point for a bad actor to use to gain access to further systems on the drupal server.
-\\\\
+
 The drupal\_drupageddon exploit is a good choice, as it is a SQL injection exploit. Drupal being a CMS makes this especially volatile, as usually, content pages for users using a CMS will be stored in some database, which the CMS then renders, effectively making entire websites available to bad actors gaining access using SQL injection. This is also the reason why the exploit was dubbed drupageddon, as it caused mass amounts of issues.
 \subsubsection{For the rest of the tutorial, we will use the vulnerability \textit{dubbed drupageddon.} What is the underlying vulnerability?}
 As explained before, the underlying vulnerability is an SQL injection vulnerability.
