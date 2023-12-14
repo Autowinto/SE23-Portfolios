@@ -10,21 +10,20 @@ After running the glassfish\_login exploit, the username and password combinatio
 With a brute force attack, we are testing for weak passwords, lack of multi-factor-authentication within the organization, as well as external ip addresses being allowed to sign in.
 \subsubsection{Discuss what would be your suggestions to the admin
     in order to address and mitigate this issue?}
-One thing that the admin could do is use stronger passwords, this however, doesn't help in the case of a password leak to some database. Therefore, another thing that the admin could do, is introduce multi-factor-authentication when signing in to relevant organization accounts. Additionally, restricting access to specific IP addresses localized where the organization is physically located or allowing access through a specific VPN would go a long way to mitigate this issue.
+One thing that the admin could do is use stronger passwords, this however, does not help in the case of a password leak to some database. Therefore, another thing that the admin could do, is introduce multi-factor-authentication when signing in to relevant organization accounts. Additionally, restricting access to specific IP addresses localized where the organization is physically located or allowing access through a specific VPN would go a long way to mitigate this issue.
 \subsubsection{How is this attack type related to the internet of things,
     internet routers, and, e.g., virtual machines?}
 Brute force attacks relate to the three mentioned platforms in the following ways:
-\begin{itemize}
-    \item
-          \textbf{Internet of Things (IoT)}
-          Many IoT devices, such as cameras, smart devices and more, often come with default credentials set, which are usually readily available online. This makes these the perfect target for brute force attacks, as most users don't bother changing the default credentials.
-    \item
-          \textbf{Internet Routers}
-          Internet routers suffer the same issue as IoT devices, as again, routers come with default passwords, which many people don't bother setting. If an intruder is even able to gain physical access to the router, an ethernet cable can be used to open ports without the need of Wi-Fi passwords.
-    \item
-          \textbf{Virtual Machines}
-          Just like with the previous two, many virtual machines come with default passwords, (for example the Kali Linux image that we're using for this course), which allows for potential easy access via brute force attacks. Especially if said virtual machines allow for remote access.
-\end{itemize}
+
+\textbf{Internet of Things (IoT)}\\
+Many IoT devices, such as cameras, smart devices and more, often come with default credentials set, which are usually readily available online. This makes these the perfect target for brute force attacks, as most users do not bother changing the default credentials.
+
+\textbf{Internet Routers}\\
+Internet routers suffer the same issue as IoT devices, as again, routers come with default passwords, which many people do not bother setting. If an intruder is even able to gain physical access to the router, an ethernet cable can be used to open ports without the need of Wi-Fi passwords.
+
+\textbf{Virtual Machines}\\
+Just like with the previous two, many virtual machines come with default passwords, (for example the Kali Linux image that we are using for this course), which allows for potential easy access via brute force attacks. Especially if said virtual machines allow for remote access.
+
 \subsubsection{Do you know a way in which HTTPS could make the
     connection more secure against this kind of attack?}
-While HTTPS doesn't protect against brute force attacks in and of itself, it does so indirectly, by encrypting all data access, securing login pages and ensuring that the server that the user is communicating with is actually the server that it says it is. This makes it much harder for a malicious entity to perform man-in-the middle attacks and makes it harder for passwords to leak onto potential databases which can be used to brute force.
+While HTTPS does not protect against brute force attacks in and of itself, it does so indirectly, by encrypting all data access, securing login pages and ensuring that the server that the user is communicating with is actually the server that it says it is. This makes it much harder for a malicious entity to perform man-in-the middle attacks and makes it harder for passwords to leak onto potential databases which can be used to brute force.

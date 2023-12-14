@@ -10,6 +10,7 @@
     \usepackage[T1]{fontenc}
     \usepackage{graphicx}
     \usepackage{float}
+    \usepackage{titlesec}
 
 \hypersetup{
     colorlinks=true,
@@ -17,6 +18,9 @@
     filecolor=magenta,
     urlcolor=cyan,
 }
+
+% \titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{}{\hrule\vspace{0.5ex}}[\vspace{1ex}\hrule]
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{}{\hrule\vspace{0.5ex}\dag\space}[\vspace{1ex}\hrule]
 
 \setcounter{secnumdepth}{0}
 \setcounter{tocdepth}{2}
@@ -30,8 +34,9 @@
 \begin{document}
 
 \lstset{
-    numbers=left,
-    frame=line,
+    frame=shadowbox,
+    numberstyle=\footnotesize,
+    frame=single,
     breaklines=true
 }
 
@@ -40,7 +45,10 @@
 \vspace*{\fill}
 \begin{center}
     \bf{%
-        Student Mail: magla21@student.sdu.dk}
+        Student Mail:} magla21@student.sdu.dk \\
+    \bf{% 
+        Course Code: SI5-CS \\
+    }
 \end{center}
 \newpage
 \tableofcontents

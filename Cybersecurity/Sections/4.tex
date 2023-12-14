@@ -1,10 +1,11 @@
 \section{Exercise 4: SQL Injection}
 \subsection{Preparation}
 \subsubsection{Does it mean the MySQL server is protected against cyber attacks?}
-It doesn't necessarily mean that the server is protected against attacks. Restricting the version number is one security measure, but it doesn't mean that the entire server is secure from any and all exploits.
+It does not necessarily mean that the server is protected against attacks. Restricting the version number is one security measure, but it does not mean that the entire server is secure from any and all exploits.
 
 \subsubsection{How could that protection look like?}
-Protection against cyberattacks could be things like using strong asswords, restricting access to only certain users or groups, using TLS encryption, disabling unnecessary features in the MySQL server, logging access to the server, updating to the latest versions and security patches frequently, setting up a firewall etc.
+Protection against cyberattacks could be things like using strong passwords, restricting access to only certain users or groups, using TLS encryption, disabling unnecessary features in the MySQL server, logging access to the server, updating to the latest versions and security patches frequently, setting up a firewall etc.
+
 \subsubsection{And what exactly would it protect against?}
 Hiding the version-number protects against exploits that are available for certain versions of the MySQL server, while making use of general best-practices when it comes to security configuration, ensures that the amount of available exploits are minimized.
 
@@ -13,15 +14,12 @@ Hiding the version-number protects against exploits that are available for certa
 Directory listings should always be disabled for public websites, as it gives potential bad actors access to information about potential vulnerabilities and files that no user would need access to.
 
 \subsubsection{What type of SQLi attack works? Can you explain why?}
-Out of the four options presented, the SQL injection attack that will work, is 'OR 1\=1\#. The reason for this, is because the beginning single quote terminates any string, meaning that SQL will now interpret anything after the single quote, as proper SQL statements. After the single quote, the statement OR 1=1, which is of course always a statement and makes the SQL statement always true, giving us the ability to fetch all data in a table for example.
+Out of the four options presented, the SQL injection attack that will work, is \texttt{' OR 1=1\#}. The reason for this, is because the beginning single quote terminates any string, meaning that SQL will now interpret anything after the single quote, as proper SQL statements. After the single quote, the statement \texttt{OR 1=1}, which is of course always a statement and makes the SQL statement always true, giving us the ability to fetch all data in a table for example.
 
 \subsubsection{What is the \# sign for? Can we generally assume it to do the trick?}
-A \# symbol denotes the beginning of a comment, which in the context of an SQL injection attack, effectively has the purpose of ignoring any other SQL that might come after our injection, as we don't really care about that and it reduces the risk of some check being run.
+A \# symbol denotes the beginning of a comment, which in the context of an SQL injection attack, effectively has the purpose of ignoring any other SQL that might come after our injection, as we do not really care about that and it reduces the risk of some check being run.
 
 \subsubsection{Include four relevant username/password combinations in your report. What is the issue with the passwords in the database and what could be done to secure them?}
-
-Relevant username and password combinations extracted would be:
-\\
 \begin{center}
   \begin{tblr}{hlines, vlines}
     ben\_kenobi       & thats\_no\_m00n \\
@@ -30,84 +28,102 @@ Relevant username and password combinations extracted would be:
     jarjar\_binks     & mesah\_p@ssw0rd \\
   \end{tblr}
 \end{center}
+
+The issue with these usernames and passwords is that we are even able to read the passwords. In a secure environment passwords should never be stored unhashed in plain text and should always be encrypted.
+
 \subsubsection{Which other problem allows you to get into the machine using ssh? How could this be prevented?}
 The fact that I can access the SSH server without having setup a valid SSH key is alarming and should be addressed. You shouldn't be able to access an SSH server with a username and password combination only.
+
+The SSH server should be configured to require an ssh key in order to sign in, as it would require to be signed from the target machine, making it much harder to enter without permission.
 
 \subsection{Elevation of Privilege}
 \subsubsection{Which are the individual issues that allowed us to go from a web interface to root access, and how would you address them as a server's operator to prevent them being exploited? Describe the issues you identified and tryto come up with suggestions on how to fix them}
 
-There were several issues. Below I'll list the issues and explain how I would go about fixing these issues.
+There were several issues. Below I have listed the issues and explains how I would go about fixing them.
 
 \begin{itemize}
   \item The directory listing should never be available publicly. In fact, there is very little reason why it should ever be available. Therefore, this should be made unavailable.
-  \item Backend is prone to SQL injection attacks. The backend server should validate the incoming requests, especially when raw SQL is involved, so it isn't as prone to SQL injection attacks as what it clearly is.
+  \item Backend is prone to SQL injection attacks. The backend server should validate the incoming requests, especially when raw SQL is involved, so it is not as prone to SQL injection attacks as it currently clearly is.
   \item SSH server accepts plain username and passwords to connect. SSH server should require a valid SSH key to access. Additionally, the SSH server should only be allowed to connect to from specific IP addresses to limit the potential bad actors.
 \end{itemize}
 
 \subsubsection{Can SQL Injection expose an otherwise inaccessible database server?}
-So long as there is a way to perform input towards an SQL server, it's possible to expose a database to potentially being attacked. It's all a matter of how well protected the backend accessing the database server is.
+So long as there is a way to perform input towards an SQL server, it is possible to expose a database to potentially being attacked. It is all a matter of how well protected the backend accessing the database server is.
 
 \subsubsection{How likely do you think an attack scenario as presented here is?}
-This specific scenario is extremely unlikely today. For us to have this easy of access to an SSH server with root privileges even, a perfect storm of security vulnerabilities would need to ve available to us. The only reason we have access to all of these vulnerabilities, are because of the metasploitable3 VM, made specifically to be have these vulnerabilities available. In the real world, it wouldn't be so easy.
+This specific scenario is extremely unlikely today. For us to have this easy access to an SSH server with root privileges even, a perfect storm of security vulnerabilities would need to be available to us. The only reason we have access to all of these vulnerabilities, are because of the metasploitable3 VM, made specifically to be have these vulnerabilities available. In the real world, it would not be so easy.
 
 \subsection{Using our Foot in the Door for Access to Other Services}
 \subsubsection{Is sudo necessary? What do we gain by using it?}
-Using sudo specifies the command to be run with root privileges, allowing us to view the location of all files containing the payroll name that we are searching for, no matter what folder it's in. We can find files in other users' owned folders as well as folders in root owned directories like this. While not strictly necessary, it does make for a more complete search, and in this case, allows us to find the file we're looking for.
+Using sudo specifies the command to be run with root privileges, allowing us to view the location of all files containing the payroll name that we are searching for, no matter what folder it is in. We can find files in other users' owned folders as well as folders in root owned directories like this. While not strictly necessary, it does make for a more complete search, and in this case, allows us to find the file that we are looking for.
 \subsubsection{Are there other ways to search for a file? Which do you know?}
 There exist several commands to search for files.
 
-\begin{itemize}
-  \item find: The command we used previously.
-  \item grep: Used to search for text within files primarily.
-  \item ls | grep: ls used together with piping the result to grep allows for searches.
-  \item Fuzzy finders: Fuzzy finders allow for searching in both file contents and searching for file names.
-\end{itemize}
+
+\begin{tblr}{}
+  \texttt{find: } & The command we used previously.                                                       \\
+  \texttt{grep: } & Used to search for text within files primarily.                                       \\
+  \texttt{ls: }   & ls used together with piping the result to grep allows for searches.                  \\
+  \texttt{fzf: }  & Fuzzy finders allow for searching in both file contents and searching for file names. \\
+\end{tblr}
 
 \subsubsection{Can you find anything interesting?}
-Performing the cat command shows us the contents of payroll.php. The file especially contains something interesting, in that the connection details aren't contained in some environment variables or something other. They are fully exposed, allowing us a full backdoor to the mysql database.
-\lstinputlisting[caption={The payroll.php file}, firstline=3, lastline=6]{Outputs/E04/payroll.php}
+Performing the cat command shows us the contents of payroll.php.
+\lstinputlisting[firstline=3, lastline=6]{Outputs/E04/payroll.php}
+
+The file especially contains something interesting, in that the connection details are not contained in some environment variables or something other. They are fully exposed, allowing us a full backdoor to the MySQL database.
+
 Interesting information that we can obtain from this are the username, password, hostname as well as the database name.
 \subsubsection{What's the username, password and database name?}
-\begin{itemize}
-  \item Hostname: 127.0.0.1 / localhost
-  \item Username: root
-  \item Password: sploitme
-  \item Datbase Name: payroll
-\end{itemize}
+\begin{tblr}{}
+  \texttt{Hostname: } & 127.0.0.1 \\
+  \texttt{Username: } & root      \\
+  \texttt{Password: } & sploitme  \\
+  \texttt{DB Name: }  & payroll   \\
+\end{tblr}
 \subsubsection{What was the problem with the web application?}
-The problem with the web application is that it's accepting user input as string concatenation, which makes it very easy to perform SQL injection.
+The problem with the web application is that it is accepting user input as string concatenation, which makes it very easy to perform SQL injection.
 \subsubsection{Which ports and services were the problem associated with?}
 We were able to access the directory listing through the exposed port 80 nginx service, which had directory listing enabled.
 \subsubsection{How did you exploit the vulnerability?}
-The exposed directory listing allowed us to access the payroll.php application and exploit the SQL injectable web application.
+The exposed directory listing allowed us to access the \texttt{payroll.php} application and exploit the SQL injectable web application.
 \subsubsection{And what were you able to do?}
-Through use of said exploit, I was able to gain access to SSH usernames and passwords and be able to gain access to not only the SSH server, but root access, allowing us to see the entire payroll.php file and gain information on how to gain direct database access.
-\subsubsection{How would you suggest to fix the problem? (Do some online research aboutSQL injections solutions.)}
-Based on my research, the correct way to fix an SQL injection vulnerability, is to separate the SQL from the data itself and "prepare" the data before being used in the query. In the context of the existing payroll.php application, which uses MySQLi to perform its queries, it should make use of the execute\_query() function, which allows you to define a SQL statement and insert the user input as variables. This way, the variables are prepared properly.
+Through use of said exploit, I was able to gain access to SSH usernames and passwords and be able to gain access to not only the SSH server, but root access, allowing us to see the entire \texttt{payroll.php} file and gain information on how to gain direct database access.
+\subsubsection{How would you suggest to fix the problem? (Do some online research about SQL injections solutions.)}
+Based on my research, the correct way to fix an SQL injection vulnerability, is to separate the SQL from the data itself and "prepare" the data before being used in the query. In the context of the existing \texttt{payroll.php} application, which uses MySQLi to perform its queries, it should make use of the \texttt{execute\_query} function, which allows us to define a SQL statement and insert the user input as variables. This way, the variables are prepared properly.
 \subsubsection{Draft a shortly and crisply, the relevant parts of a policy trying to prevent these issues.}
-The policy to prevent these issues will sound as follows:
+The policy to prevent these issues will be implemented as follows:
 
 All database queries must be performed using prepared statements of parameters, so as to protect against SQL injections. Additionally, user input should be validated on the frontend, as well as validated and sanitized on the backend. Database connection details should be fetched from some encrypted environment variables or something similar, to not expose these variables to the eyes of potential bad actors. Systems should regularly be updated and patched to avoid some of the most serious vulnerabilities. Finally, staff should undergo periodic training to ensure that these standards are upheld.
 
 \subsection{Fully Explore Local Accounts}
 \subsubsection{What are benefits of performing this scan after already having full access?}
-The benefits of performing the scan with full access can be, just that. Having full access and potentially discovering new passwords and usernames to crack. By having root access, we already have access to a potential multitude increase in directories that we can scan for vulenerable passwords, which allows the scan to be potentially much more effective.
+The benefits of performing the scan with full access can be, just that. Having full access and potentially discovering new passwords and usernames to crack. By having root access, we already have access to a potential multitude increase in directories that we can scan for vulnerable passwords, which allows the scan to be potentially much more effective.
 
 \subsection{Post-Exploitation}
 \subsubsection{Thinking as an attacker, what would your next steps be?}
 First, I would seek to gain some sort of persistence, meaning that even if I was discovered and the system restarted, I could still have access to the machine. This would be in the form of some sort of backdoor.
 
-Since I already have root access, I don't need to work towards gaining increased access, however, I would install tools which allow me to gain increased information.
+Since I already have root access, I do not need to work towards gaining increased access, however, I would install tools which allow me to gain increased information.
 
-Having access to one machine on a network, I would try to discover additional machines that I could access, which could potentially gain me access to even more information. I would do all of this while making sure to leave as few logs as possible, so I wasn't discovered.
+Having access to one machine on a network, I would try to discover additional machines that I could access, which could potentially grant me access to even more information. I would do all of this while making sure to leave as few logs as possible, so I would not be discovered.
+
 \subsubsection{As an operator, what would you do to counteract?}
-After discovering that an attack is underway, my first reaction would be to take the server off the public network to avoid further damage. Afterwards, I would cross-reference versions of software on my server with any known vulnerabilities, in case I hadn't updated to secure versions in time. If the exploits weren't obvious, I would use logs to try and figure out where the attack came from and through what kind of connection to narrow down teh entry point and ultimately work towards patching the vulnerability.
+After discovering that an attack is underway, my first reaction would be to take the server off the public network to avoid further damage. Afterwards, I would cross-reference versions of software on my server with any known vulnerabilities, in case I had not updated to secure versions in time. If the exploits were not obvious, I would use logs to try and figure out where the attack came from and through what kind of connection to narrow down the entry point, and ultimately work towards patching the vulnerability.
 
 \subsection{Obfuscated Malware}
 \subsubsection{Take your time to look at the code. Is it readable?}
-By itself the code isn't readable at all, as it's encoded in a base64 string format. After decoding the encoded string, we get the following code:
-\lstinputlisting[caption={The decoded python file}, language=python]{Outputs/E04/decoded.py}
-\subsubsection{What does the code do? Is it a malicious software and if so how would you classify it?}
-The code seemingly scans for an ip and a port and opens up a reverse shell using netcat to allow someone to connect to the shell of the machine where the payload is being run. While the scan function in and of itself isn't malicious, as it does exactly what it says it does, the resetScanner function actually downloads a file and attempts to execute it and the reverseShell function tried to open up a reverse shell IP 777.888.99.000:1234, potentially giving an attacker access to your machine.
+By itself the code is not readable at all, as it is encoded in a base64 string format. After decoding the encoded string, we the full legible code.
 
-If you aren't careful and simply check the first function, you might be tempted to think the entire script is simply a scan script and disregard any security problems. Especially since the cleanup funciton removes any trace of the downloaded files, essentially making the malicious act undetectable if not careful.
+\subsubsection{What does the code do? Is it a malicious software and if so how would you classify it?}
+First, the code calls the \texttt{scan} function, which does exactly as it says and at first, may lead you to think that \vfill
+\lstinputlisting[language=python, lastline=11]{Outputs/E04/decoded.py}
+After running the harmless \texttt{scan} function, the more malicious cleanup function is called, which further calls two malicious functions.
+\lstinputlisting[language=python, firstline=40]{Outputs/E04/decoded.py}
+The function \texttt{resetScanner} doesn't exactly do as described, as it in fact attempts to download a python script and execute it.
+\lstinputlisting[language=python, firstline=13, lastline=27]{Outputs/E04/decoded.py}
+Finally, the \texttt{reversShell} function is called, which finally attempts to open up a reverse shell on 777.888.99.000:1234, giving the attacker access to the machine, where they can cause even more damage.
+\lstinputlisting[language=python, firstline=28, lastline=38]{Outputs/E04/decoded.py}
+
+
+If you are not careful and simply check the first function, you might be tempted to think the entire script is simply a scan script and disregard any security problems. Especially since the cleanup function removes any trace of the downloaded files, essentially making the malicious act undetectable if inattentive.
