@@ -123,6 +123,7 @@ After running the harmless \texttt{scan} function, the more malicious cleanup fu
 The function \texttt{resetScanner} doesn't exactly do as described, as it in fact attempts to download a python script and execute it.
 \lstinputlisting[language=python, firstline=13, lastline=27]{Outputs/E04/decoded.py}
 Finally, the \texttt{reversShell} function is called, which finally attempts to open up a reverse shell on 777.888.99.000:1234, giving the attacker access to the machine, where they can cause even more damage.
+\vfill
 \lstinputlisting[language=python, firstline=28, lastline=38]{Outputs/E04/decoded.py}
 
 

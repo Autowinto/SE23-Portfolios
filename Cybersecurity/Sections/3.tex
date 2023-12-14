@@ -100,7 +100,7 @@ The four services that were selected to be analyzed are:
           \end{itemize}
     \item SSH, 22, OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.13 (Ubuntu Linux; protocol 2.0)
           \begin{itemize}
-              \item \textbf{Vulnerability:} OpenSSH allows signing in with default credentials, allowing anyone to bypass authentication.
+              \item \textbf{Vulnerability:} OpenSSH allows signing in to a minikube container with default credentials, allowing anyone to bypass authentication.
               \item \textbf{Severity:} The severity is very high, as allowing users to bypass any part of the security of an SSH connection, could result in further unauthorized access and potentially remote access to a full machine's shell.
               \item \textbf{Source:} \href{https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-1944}{CVE-2023-1944}
           \end{itemize}
