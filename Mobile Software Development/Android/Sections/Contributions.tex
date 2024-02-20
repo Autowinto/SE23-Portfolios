@@ -1,0 +1,16 @@
+\section*{Contributions}
+My contributions towards the Android project lie in translating the figma design to an application frontend, taking a project management role on development of the frontend, as well as assisting the group members who worked on the custom backend of the app whenever issues arose. Additionally, I ensured that the API wrapper used on the frontend was up to date and functional.
+
+\subsection*{Activities}
+I had a hand in creating most of the Activities, such as the HomeActivity, the GroupInfoActivity, GroupCreateActivity, HistoryActivity, MainActivity, however for most of the aóther Activities, my contribution lied mostly in implementing data logic and state logic to already existing layouts made by other group members.
+
+One planned activity, that we didn't get to actually implement, is the Expenses Activities, which we never quite got to work. The actual design of the pages and the interconnectivity of nested Activities was designed by another group member, which ultimately would've required a larger refactor, that we didn't have time to perform.
+
+\subsection*{View Models}
+The application has a couple of View Models, the purpose of which was to allow cross-activity data sharing and state management. This however, was not implemented to the extent that we would've liked due to time constraints, and thus only a few Activities make use of them. A future version of the application would of course, make use of these properly.
+
+\subsection*{Retrofit}
+Retrofit was the library of choice for performing HTTP requests between the frontend and the backend. In order to make use of Retrofit, data definitions, telling the application what the data received from the HTTP requests looked like, were written by me, as well as route interfaces, which specified API routes, the data that was received by them, as well as the request bodies that could be sent with POST and PUT requests.
+
+\subsection*{UserSession}
+The project contains one utility class, which is the UserSession class. This class was created by me. The function of this class is simply, to hold information about the user that is logged in, allow the application to set which user is logged in or clear the user information. The reason for having this, is that the application allows for registering and login of multiple different users, which of course requires a way to manage which user is signed in upon succesful login.

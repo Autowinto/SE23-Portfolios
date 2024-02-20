@@ -1,7 +1,11 @@
 
 \section{Continuous Integration}
-Reflect on the following questions:
-\begin{itemize}
-    \item What is Continuous Integration and how could you apply it?
-    \item How to use version control systems (git) based on your portfolio?
-\end{itemize}
+\subsection{What is Continuous Integration?}
+Continuous Integration is the concept of continuously testing code and performing builds, artifact pushes and more, when code is pushed to relevant git branches or when pull requests are made. These things should be completely automatic and run without human input, notifying a developer of issues with their code if any are encountered.
+\subsection{Implementation}
+In our project, we make use of a pretty simple pipeline, simply called maven.yml, which is a pipeline performing a build test. Firstly, in the \textbf{on} key, the fact that the pipeline should run whenever pull requests to the develop branch are made. Next, the \textbf{jobs} key defines what should happen whenever a pull request to the develop branch is created. In this case, it sets up Java version 11 and Maven, and performs a Maven build. Should this build fail, GitHub is setup to disallow merging before the issues are fixed.
+
+Additionally, to ensure that nothing is pushed to the main branch, circumventing the build check that is put in place, the repository has settings disallowing pushes to the main branch as well as pull requests to the main branch from anything other than the develop branch. This means that at least theoretically, no bad code should get through to the expectedly stable main branch.
+\lstinputlisting[title=.github/workflows/maven.yml]{Code/pipeline.yml}
+\subsection{Effectively using git in our project}
+Collaboration during the project, of course, made use of git. Specifically, each group member managed their own refactoring branches to ensure minimal conflicts and code deletion. The use of Continuous Integration allowed for smooth development, in that, if issues arose, the build test would notify group members immediately, so that they could resolve their issues together in a pull request, separately from the rest of the code.
