@@ -1,2 +1,47 @@
 \section{Refactoring Implementation}
 Explain where and why you made changes in the source code.  That is, explain the difference between the actual change set compared to the estimated impacted set from the impact analysis. Which classes or methods did you create or change? Furthermore, describe used design patterns and reflect about improved design to improve future software maintenance.
+
+
+Firstly, the part of the code that handles searching for an empty view and creating a new one to put the image if it does exist, was extracted into its own method. Below, the code as it was before can be seen.
+\begin{figure}[H]
+  \lstinputlisting[language=java, firstline=103, lastline=119]{Code/OpenFileAction.java}
+  \caption{The old snippet finding the view and setting the disposeView boolean}
+\end{figure}
+
+After the refactor, the code was cleaned up and extracted into its own method, which is much cleaner and more maintainable. Additionally, the large check for whether the view should be disposed, was refactored into a simple one-liner, as nothing else is needed in this case.
+\begin{figure}[H]
+  \lstinputlisting[language=java, firstline=110, lastline=111]{Code/OpenFileActionRefactored.java}
+  \caption{The function calls in the actionPerformed method}
+\end{figure}
+
+\begin{figure}[H]
+  \lstinputlisting[language=java, firstline=150, lastline=159]{Code/OpenFileActionRefactored.java}
+  \caption{The new findEmptyView method of the OpenFileAction class}
+\end{figure}
+
+The code prior to being refactored had multiple levels of nesting, which made it very hard to read and follow along, especially when if and else statements were tens of lines apart. This can be seen below.
+
+\begin{figure}[H]
+  \lstinputlisting[language=java, firstline=120, lastline=145]{Code/OpenFileAction.java}
+  \caption{The old actionPerformed code of the OpenFileAction class}
+\end{figure}
+
+Refactoring for this part involved reversing the if statement, making sure to return inside of this reversed if statement so that the rest of the code isn't run, as well as extracting the large if statement which handled URIs being opened multiple times, into its own method.
+
+\begin{figure}[H]
+  \lstinputlisting[language=java, firstline=133, lastline=148]{Code/OpenFileActionRefactored.java}
+  \caption{The new processViewsForUniqueURI method}
+\end{figure}
+
+\begin{figure}[H]
+  \lstinputlisting[language=java, firstline=113, lastline=129]{Code/OpenFileActionRefactored.java}
+  \caption{The new non-nested snippet calling the processViewsForUniqueURI method}
+\end{figure}
+
+
+\subsection{Result}
+Finally, after performing the refactor, we've succeeded in implementing our planned refactors. Useless comments have been removed from the class, inner methods have been replaced by lambda expressions making the code overall much cleaner.
+
+Overall, the refactoring has been executed in a satisfactory manner where no interfaces or abstract classes have needed to be changed causing a ripple effect of refactors. Every refactor has been performed within the scope of its interface, allowing for minimal impact across the software, keeping it stable and preserving functionality.
+
+This makes the code much easier to maintain and will lead to higher code quality in the future.

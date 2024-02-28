@@ -1,7 +1,25 @@
 \section{Conclusion}
-Explain your experience with creating the final baseline of JHotDraw.
-How did you manage to merge in your changes to the baseline ?
-How was the system tested?
-Describe your reflection on what went well and what went not so well. 
-Did you have to cut the scope of your change request and did you have to put some issues back into the backlog. 
-What can be done to avoid future problems, i.e. what have you learned from the iteration.
+Overall, I think the project went well and taught me a lot about how much work actually goes into a refactor. I was surprised to realize that I didn't have enough time to do everything that I wanted with the software, but that experience was valuable in and of itself, as I will be more mindful of that in the future.
+
+Working together as a group, overall was also very succesful. The initial stages of the project had everyone work together to produce the necessary reports and CI/CD pipelines so we could work together as effectively as possible.
+I did however, run into an issue with the Featureous software. I realized much too late, that the Featureous report that I had generated showed my feature as correlating with my feature, which ended up forcing me to cut my impact analysis short and made the final analysis table somewhat lackluster.
+\subsection{Merging with the baseline}
+Merging of the baseline version was performed using Git version control, which was done by developing on my own separate feature branch. Then, when I felt the feature was stable, I would rebase my branch on the develop branch before ultimately merging my feature branch into develop. Afterwards, I verified using CI/CD as well as manual verification, that everything was still working as intented.
+
+This workflow allowed me to merge my feature into the baseline branch without any issues.
+
+\subsection{Testing}
+Testing was a very important aspect of this project to ensure stability and functionality post-refactor. Therefore, multiple ways of testing was employed.
+
+\textbf{Unit Testing:} I made use of unit tests to test single parts of the software, ensuring that nothing broke while refactoring my feature.
+
+\textbf{User Acceptance Testing:} I made use of User Acceptance tests in accordance with BDD to test that the software could perform the feature in the exact way that the user had intended prior to the refactor.
+
+\textbf{Manual Testing:} I made use of period manual tests in the form of starting the software and going through the motions of loading in an image, to verify that nothing ctritical in the feature had broken while refactoring.
+
+The system was tested thoroughly using unit tests and behaviour-driven development ensuring that refactoring of my feature was fully functional, as well as ensuring that the refactor didn't break any other team members' features.
+\subsection{Scope Changes}
+I ended up spending way too much time on files that in the end weren't really relevant to my feature, such as the LoadFileAction class, which resulted in me having to cut parts of my planned refactor short, focusing on other aspects of the project after refactoring only a single class.
+
+\subsection{Avoiding Problems in the Future}
+Also, in the future, I need to be more careful that the report that I am basing my impact analysis off of has been produced correclty, so that I can avoid spending unnecessary time on an analysis that has way too much information compared to what is actually needed.

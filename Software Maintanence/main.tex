@@ -1,27 +1,48 @@
 \documentclass{article}
+\ExplSyntaxOn
+\prop_new:N\g__tblr_defined_hdash_styles_prop
+\prop_new:N\g__tblr_defined_vdash_styles_prop
+\prop_new:N\g__tblr_initial_table_prop
+\prop_new:N\g__tblr_initial_rows_prop
+\prop_new:N\g__tblr_initial_columns_prop
+\prop_new:N\g__tblr_initial_cells_prop
+\prop_new:N\g__tblr_initial_hlines_prop
+\prop_new:N\g__tblr_initial_vlines_prop
+\ExplSyntaxOff
 %     % General document formatting
-    \usepackage[margin=0.7in]{geometry}
-    \usepackage[utf8]{inputenc}
-    \usepackage{tabularray}
-    \usepackage[fontsize=12pt]{fontsize}
-    \usepackage[parfill]{parskip}
-    \usepackage{hyperref}
-    \usepackage[final]{listings}
-    \usepackage[T1]{fontenc}
-    \usepackage{listings}
-    \usepackage{xcolor}
-    \usepackage{graphicx}
-    \usepackage{float}
-    \usepackage{titlesec}
+\usepackage[margin=0.7in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularray}
+\usepackage[fontsize=12pt]{fontsize}
+\usepackage[parfill]{parskip}
+\usepackage{hyperref}
+\usepackage[final]{listings}
+\usepackage[T1]{fontenc}
+\usepackage[style=verbose]{biblatex}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{lstautogobble}
+\usepackage{float}
+\usepackage{titlesec}
+
+\addbibresource{refs.bib}
 
 \title{%
     Opening various image formats\\
     \large Software Maintance Autumn 2023
 }
 \author{Magnus Christian Larsen}
-\lstset{breaklines=true, captionpos=b, numbers=left, numberstyle=\color{gray}, tabsize=2, backgroundcolor=\color{gray!10}}
-
-
+\lstset{
+    breaklines=true, 
+    captionpos=b, 
+    numbers=left, 
+    numberstyle=\color{gray},
+    tabsize=2, 
+    backgroundcolor=\color{gray!10},
+    frame=single,
+    autogobble=true
+    }
 
 \begin{document}
 \maketitle
@@ -31,7 +52,7 @@
         GitHub Username: Autowinto\\
         Student Mail: magla21@student.sdu.dk\\
         Project: https://github.com/Autowinto/JHotDraw\\
-        Date: mm/dd/yyyy}
+        Date: 28/02/2024}
 \end{center}
 \newpage
 \tableofcontents
@@ -46,5 +67,7 @@
 \include{Chapters/continuousintegration}
 \include{Chapters/conclusion}
 \include{Chapters/sourcecode}
+
+\printbibliography
 
 \end{document}

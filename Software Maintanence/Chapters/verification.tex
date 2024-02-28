@@ -1,4 +1,17 @@
 \section{Verification}
 At class level document unit tests of important business functionality.
-Document how you have verified your implemented change. 
+Document how you have verified your implemented change.
 Document the results of your acceptance test that test your feature from your change request.
+
+
+\subsection{Manual Verification}
+One way of testing whether our code works as intended, is by simply running the program and trying out the feature. Humans are, however, quite prone to errors and usually won't do the exact same thing twice, and therefore, this is a bad idea to have as your only test. It is, however, while developing a very good way of ensuring that you haven't catastrophically broken the program to the point of it not compiling.
+\subsection{Unit Testing}
+A much more consistent type of test is the unit test, testing a small section of your program with a tiny mockup of a real situation.
+
+\subsection{BDD Testing}
+Finally, we have BDD testing or Behavior-Driven Development, which is a method focusing on communication and collaboration between developers and non-technical people such as project managers, project owners etc.
+
+By using BDD, we define the user stories that we previously defined using code, which will then perform the tests for us. By mapping these user stories to tests, we ensure that no misunderstanding between project manager, developer and tester can occur, or at least that it will be very hard for misunderstandings to occur.
+
+These BDD tests are defined in the "Given-When-Then" format, meaning that we define the initial scenario, then we describe a specific event, usually triggering an action in the program and then we define what we expect as a result.

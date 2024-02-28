@@ -1,15 +1,73 @@
-\section{Refactoring Patterns and Code smells}
+\section{Refactoring Patterns and Code Smells}
 
-There is so much fucking duplicated code.
-The methods are incredibly long
-Method names are fucked and have no proper meaning
-Long parameter lists
-Confusing naming of classes and functions.
+%There is so much fucking duplicated code.
+%The methods are incredibly long
+%Method names are fucked and have no proper meaning
+%Long parameter lists
+%Confusing naming of classes and functions.
 
-There is no reason to be abbreviating variables to the point of them being single letters. It makes for confusing code, especially in longer methods.
+%There is no reason to be abbreviating variables to the point of them being single letters. It makes for confusing code, especially in longer methods.
 
-Describe the code smell that triggered your refactoring, see Chapter 4 in [Ker05].
-Describe what you plan to change by refactoring.
-Why do you think it's good to do the refactoring?
-Describe the strategy of the refactorings. Remember there is not one way to implement a pattern.
-Which of the refactorings from [Ker05] did you apply and what was the reasoning behind it?
+%Describe the code smell that triggered your refactoring, see Chapter 4 in [Ker05].
+%Describe what you plan to change by refactoring.
+%Why do you think it's good to do the refactoring?
+%Describe the strategy of the refactorings. Remember there is not one way to implement a pattern.
+%Which of the refactorings from [Ker05] did you apply and what was the reasoning behind it?
+
+The class that are gonna be the focus of the upcoming refactor is the OpenFileAction class. In order to find relevant code smells, I made use of the SonarLint plugin for IntelliJ, which is specially created to identify non-critical code smells in code, helping to improve clarity and maintainability of the code written.
+
+\subsection{Duplicated Code}
+The two files are similar in functionality. Unfortunately, they are also very similar in code, violating the DRY principles\footcite{kerievsky}, as they each have plenty of code that is duplicated across the clas that could very well be refactored into some shared class or helper methods. An example of this can be seen below with two code snippets from OpenFileAction and OpenRecentFileAction respectively that has almost identical code for finding an empty view.
+\begin{figure}[H]
+  \lstinputlisting[language=java, firstline=103, lastline=119]{Code/OpenFileAction.java}
+  \caption{OpenFileAction.java}
+\end{figure}
+
+\begin{figure}[H]
+  \lstinputlisting[language=java, firstline=84, lastline=98]{Code/OpenRecentFileAction.java}
+  \caption{OpenRecentFileAction.java}
+\end{figure}
+
+This also isn't the only example of duplicate code being employed. In fact, the two classes are more or less identical and could greatly benefit from this refactor.
+
+\subsubsection{Refactoring Strategy}
+The strategy that we'll be employing to refactor the class, is to move the shared code into some kind of shared location or utility class, so that we reduce the size of the classes themselves and have an easier time splitting up the code. Additionally, as there are many action classes, future refactors could benefit from these utility classes as well.
+
+It's also a possibility that an entire abstract AbstractOpenFileAction class could be employed.
+
+
+\subsection{Long Methods}
+Some of the methods of the classes are really long. In the case of the openViewFromURI method in OpenFileLocation, as many as 70 lines long. This is hard to read and created cognitive dissonance. We should refactor this into smaller methods and pieces of code.
+
+\subsubsection{Refactoring Strategy}
+To refactor this issue, we'll be splitting our code into smaller methods wherever it makes sense; splitting the responsibility of the method into smaller, more readable pieces.
+
+\subsection{Magic Strings}
+The two classes both contain multiple instances of magic strings, which even set the exact same value. This is unmaintainable, as if we were to ever want to change
+
+\subsubsection{Refactoring Strategy}
+Performing this refactor should be rather simple. The way I've decided to go about it, is to simply set the variable as a constant, as it doesn't change in the program and if there was a time when changing the variable when the program is running becomes relevant, it's much easier to simply change one place.
+
+\subsection{Commented Out Code and redundant comments}
+There are several places in the class where code is simply commented out instead of being removed. This creates cognitive dissonance and makes the code harder to read when developing, as you have to consider whether the code was left there for a reason. Code should be stored in version control. It shouldn't be stored in a comment.
+
+Additionally, some comments like the below snippet are just unnecessary and create clutter.
+
+\begin{figure}[H]
+  \lstinputlisting[language=java, firstline=84, lastline=86]{Code/OpenFileAction.java}
+  \caption{OpenFileAction.java}
+\end{figure}
+
+\subsubsection{Refactoring Strategy}
+Refactoring this is as simple as identifying unused commented-out code and deleting it.
+
+\subsubsection{Inner Classes}
+The software makes use of inner classes, such as shown below, which creates unnecessary nesting and makes the code harder to read.
+
+\begin{figure}[H]
+  \lstinputlisting[language=java, firstline=234, lastline=245]{Code/OpenFileAction.java}
+  \caption{OpenFileAction.java}
+\end{figure}
+\subsubsection{Refactoring Strategy}
+We'll be replacing these inner classes with lambda expressions, as this is much more readable and the moder
+n equivalent to inner classes anyway.
